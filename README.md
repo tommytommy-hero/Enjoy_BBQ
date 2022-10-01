@@ -39,3 +39,4 @@ BBQ初心者、上級者、BBQに興味のある方皆さんがさらに楽し�
 * gem 'kaminari'
 * gem 'ransack'
 * gem 'cocoon'
+* gem 'image_processing', '~> 1.2'
