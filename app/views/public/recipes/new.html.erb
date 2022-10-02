@@ -1,7 +1,5 @@
-<h1>Public::Recipes#new</h1>
-<p>Find me in app/views/public/recipes/new.html.erb</p>
 <div class="container">
-  <div class="row">
+  <div class="row mx-auto">
     <%= form_with model: @recipe, url: recipes_path ,method: :post, local: true do |f| %>
       <!--レシピ-->
       <div class="form-group">
@@ -13,11 +11,8 @@
         <%= f.label :ジャンル %>
         <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択してください--" %>
       </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-      <div class="col-6">
+
+      <div>
         <h4>材料</h4>
         <table class="table">
           <thead>
@@ -40,7 +35,7 @@
       </div>
 
       <!--作り方入力フォーム-->
-      <div class="col-6">
+      <div>
         <h4>作り方</h4>
         <table class="table">
           <thead>
