@@ -1,12 +1,14 @@
 class Recipe < ApplicationRecord
 
   belongs_to :user
-  belongs_to :genre
+  belongs_to :genre#, optional: true
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
+
+  accepts_nested_attributes_for :ingredients, :steps, allow_destroy: true
 
   has_one_attached :recipe_image
 

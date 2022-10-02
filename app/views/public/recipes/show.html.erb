@@ -1,2 +1,25 @@
 <h1>Public::Recipes#show</h1>
 <p>Find me in app/views/public/recipes/show.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <%= image_tag @recipe.get_recipe_image, size:"200x200" %>
+    <div>
+      <h2><%= @recipe.name %></h2>
+      <table class="table">
+        <thead>
+          <tr>材料</tr>
+        </thead>
+        <tbody>
+        <%= @recipe.ingredients.each do |ingredient| %>
+          <tr>
+            <td><%= ingredient.name %></td>
+            <td><%= ingredient.amount %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <
+    </div>
+  </div>
+</div>

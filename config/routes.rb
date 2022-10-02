@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   scope module: :public do
+    resources :users, only:[:index, :show, :edit, :update] do
+      resource :relationships, only:[:create, :destroy]
+      get 'relationships/followings', as: 'followings'
+      get 'relationships/followers', as: 'followers'
+    end
     resources :recipes do
       resource :favorites, only:[:create, :destroy]
 
@@ -21,12 +26,6 @@ Rails.application.routes.draw do
         get 'confirm'
         post 'confirm'
       end
-    end
-
-    resources :users, only:[:index, :show, :edit, :update] do
-      resource :relationships, only:[:create, :destroy]
-        get 'relationships/followings', as: 'followings'
-        get 'relationships/followers', as: 'followers'
     end
 
     root to: 'homes#top'
