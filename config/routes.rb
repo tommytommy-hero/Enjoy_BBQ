@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :edit, :create, :update, :destroy]
     resources :recipes, only:[:index, :edit, :create, :update, :destroy]
-    resources :homes, only:[:top]
+    root to: 'homes#top'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
