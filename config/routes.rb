@@ -1,36 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'recipes/show'
-    get 'recipes/index'
-    get 'recipes/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'recipes/new'
-    get 'recipes/index'
-    get 'recipes/show'
-    get 'recipes/edit'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/index'
-    get 'users/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
   devise_for :users,skip:[:passwords], controllers:{
     registrations: "public/registrations",
     sessions: "public/sessions"
@@ -38,6 +7,38 @@ Rails.application.routes.draw do
   devise_for :admins,skip:[:registrations, :passwords], controllers:{
     sessions: "admin/sessions"
   }
+  scope module: :public do
+    resources :recipes do
+      resource :favorites, only:[:create, :destroy]
+
+      resources :comments, only:[:create, :destroy]
+
+      collection do
+        get 'search'
+      end
+
+      collection do
+        get 'confirm'
+        post 'confirm'
+      end
+    end
+
+    resources :users, only:[:index, :show, :edit, :update] do
+      resource :relationships, only:[:create, :destroy]
+        get 'relationships/followings', as: 'followings'
+        get 'relationships/followers', as: 'followers'
+    end
+
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+  end
+
+  namespace :admin do
+    resources :users, only:[:index, :show, :edit, :update]
+    resources :genres, only:[:index, :edit, :create, :update, :destroy]
+    resources :recipes, only:[:index, :edit, :create, :update, :destroy]
+    resources :homes, only:[:top]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
