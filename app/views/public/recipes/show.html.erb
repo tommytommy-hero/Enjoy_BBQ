@@ -3,23 +3,47 @@
 
 <div class="container">
   <div class="row">
-    <%= image_tag @recipe.get_recipe_image, size:"200x200" %>
-    <div>
-      <h2><%= @recipe.name %></h2>
-      <table class="table">
-        <thead>
-          <tr>材料</tr>
-        </thead>
-        <tbody>
-        <%= @recipe.ingredients.each do |ingredient| %>
-          <tr>
-            <td><%= ingredient.name %></td>
-            <td><%= ingredient.amount %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <
+    <div class="col-6">
+      <%= image_tag @recipe.get_recipe_image(300,300) %>
     </div>
+
+    <div class="col-6">
+        <h2><%= @recipe.name %></h2>
+        <h4>材料</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>材料</th>
+              <th>個数</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @recipe.ingredients.each do |ingredient| %>
+            <tr>
+              <td><%= ingredient.name %></td>
+              <td><%= ingredient.amount %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <h4>手順</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ステップ</th>
+              <th>説明</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @recipe.steps.each do |step| %>
+            <tr>
+              <td><%= step.number %></td>
+              <td><%= step.explanation %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+    </div>
+
   </div>
 </div>
