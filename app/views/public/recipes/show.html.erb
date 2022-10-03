@@ -43,10 +43,12 @@
           <% end %>
           </tbody>
         </table>
-        <div class="form-btn">
-          <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
-          <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger" %>
-        </div>
+        <% if @recipe.user == current_user %>
+          <div class="form-btn">
+            <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
+            <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger" %>
+          </div>
+        <% end %>
     </div>
 
   </div>
