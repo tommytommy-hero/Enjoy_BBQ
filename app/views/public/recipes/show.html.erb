@@ -1,7 +1,6 @@
-<h1>Public::Recipes#show</h1>
-<p>Find me in app/views/public/recipes/show.html.erb</p>
 
 <div class="container">
+  <h1>詳細ページ</h1>
   <div class="row">
     <div class="col-6">
       <%= image_tag @recipe.get_recipe_image(300,300) %>
@@ -9,6 +8,7 @@
 
     <div class="col-6">
         <h2><%= @recipe.name %></h2>
+        <h3><%= @recipe.genre.name %></h3>
         <h4>材料</h4>
         <table class="table">
           <thead>
@@ -43,6 +43,10 @@
           <% end %>
           </tbody>
         </table>
+        <div class="form-btn">
+          <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
+          <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger" %>
+        </div>
     </div>
 
   </div>
