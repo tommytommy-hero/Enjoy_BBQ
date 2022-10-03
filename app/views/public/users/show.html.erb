@@ -2,7 +2,10 @@
   <div class="row">
     <!--ユーザー紹介-->
     <div class="col-4">
-      <%= image_tag @user.get_user_image(100, 100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+      <div class="col-5 mx-auto">
+        <%= image_tag @user.get_user_image(100, 100),
+            style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+      </div>
       <table class="table table-sm">
         <tr>
           <th class="col-5">ニックネーム</th>
