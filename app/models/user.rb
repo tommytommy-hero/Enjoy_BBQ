@@ -13,12 +13,22 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
   #フォロー一覧、フォロワー一覧
-  has_many :followings, through: :relationships, source: :followed_id
-  has_many :followers, through: :reverse_of_relationships, source: :follower_id
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
 
   #フォロー処理
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
   #フォロー解除処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
   #フォロー判定
+  def following?(user)
+    followings.include?(user)
+  end
+
 
   has_one_attached :user_image
 

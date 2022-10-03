@@ -20,6 +20,9 @@
           </td>
           <td><%= user.name %></td>
           <td><%= user.recipes.published.count %></td>
+          <td id="follow-btn_<%= user.id %>">
+            <%= render 'public/relationships/followbtn', user: user %>
+          </td>
         </tr>
         <% end %>
       </tbody>
