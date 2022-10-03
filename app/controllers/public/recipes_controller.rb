@@ -9,22 +9,23 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    #byebug
     if @recipe.save
-      #byebug
       redirect_to recipes_path
     else
-      #byebug
       render 'new'
     end
   end
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.published
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+  end
+
+  def confirm
+    @recipes = current_user.recipes.draft
   end
 
   def edit
@@ -55,7 +56,7 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :name, :introduction, :genre_id, :recipe_image,
+    params.require(:recipe).permit(:user_id, :name, :introduction, :genre_id, :recipe_image, :status,
     ingredients_attributes:[:id, :name, :amount, :_destroy],
     steps_attributes:[:id, :number, :explanation, :_destroy])
   end
