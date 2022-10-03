@@ -17,7 +17,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.published
+    @recipes = Recipe.published.order(created_at: "DESC")
   end
 
   def show
