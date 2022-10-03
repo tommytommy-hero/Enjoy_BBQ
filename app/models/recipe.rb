@@ -12,6 +12,8 @@ class Recipe < ApplicationRecord
 
   has_one_attached :recipe_image
 
+  enum status: { published: 0, draft: 1 }
+
   def get_recipe_image(width, height)
     unless recipe_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
