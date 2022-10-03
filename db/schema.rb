@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_10_01_223504) do
 
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "genre_id"
     t.string "name"
     t.text "introduction"
     t.integer "status", default: 0
