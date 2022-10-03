@@ -2,20 +2,22 @@
   <div class="row">
     <!--ユーザー紹介-->
     <div class="col-4">
-      <%= image_tag @user.get_user_image(100, 100) %>
+      <%= image_tag @user.get_user_image(100, 100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
       <table class="table table-sm">
         <tr>
           <th>ニックネーム</th>
           <th><%= @user.name %></th>
+          <th></th>
         </tr>
         <tr>
           <th>紹介</th>
-          <th></th>
+          <th><%= @user.introduction %></th>
         </tr>
-        <tr><%= @user.introduction %></tr>
+        <tr></tr>
         <tr>
           <th>投稿数</th>
           <th><%= @recipes.published.count %></th>
+          <th></th>
         </tr>
         <!--フォロー、いいね-->
       </table>
