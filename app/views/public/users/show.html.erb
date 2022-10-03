@@ -5,12 +5,12 @@
       <%= image_tag @user.get_user_image(100, 100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
       <table class="table table-sm">
         <tr>
-          <th>ニックネーム</th>
+          <th class="col-5">ニックネーム</th>
           <th><%= @user.name %></th>
           <th></th>
         </tr>
         <tr>
-          <th>紹介</th>
+          <th>紹介文</th>
           <th><%= @user.introduction %></th>
         </tr>
         <tr></tr>
@@ -20,6 +20,14 @@
           <th></th>
         </tr>
         <!--フォロー、いいね-->
+        <tr>
+          <th>フォロー中</th>
+          <th><%= link_to "#{ @user.followings.count}", user_followings_path(@user.id) %></th>
+        </tr>
+        <tr>
+          <th>フォロワー</th>
+          <th><%= link_to "#{ @user.followers.count}", user_followers_path(@user.id) %></th>
+        </tr>
       </table>
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
