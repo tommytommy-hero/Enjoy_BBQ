@@ -1,0 +1,14 @@
+<table class="table">
+  <% recipes.each do |recipe| %>
+  <tr>
+    <th>
+      <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.get_recipe_image(80, 80) %>
+      <% end %>
+    </th>
+    <th><%= recipe.name %></th>
+    <th><%= recipe.genre.name %></th>
+    <th><%= recipe.created_at.strftime('%m/%d %H:%M:%S') %></th>
+  </tr>
+  <% end %>
+</table>
