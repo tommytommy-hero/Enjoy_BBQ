@@ -30,19 +30,20 @@
       <!--ジャンル-->
     </div>
         <!--投稿一覧-->
-    <div class="col-7 offset-1">
+    <div class="col-9">
       <div class="row">
       <% if @user == current_user %>
         <div class="col-6">
-          <h4>投稿レシピ一覧　<%= @recipes.count %></h4>
+          <h4>投稿レシピ一覧　<%= @recipes.count %>件</h4>
         </div>
         <div class="col-5 offset-1">
           <%= link_to "新規投稿", new_recipe_path, class: "btn btn-success" %>
         </div>
+      </div><br>
         <%= render 'public/recipes/index', recipes: @recipes %>
-      </div>
       <% else %>
-        <h4>投稿レシピ一覧　<%= @recipes.published.count %></h4>
+      <div class="row">
+        <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4>
         <%= render 'public/recipes/index', recipes: @recipes.published %>
       <% end %>
     </div>
