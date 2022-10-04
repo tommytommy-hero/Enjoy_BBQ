@@ -1,30 +1,17 @@
 <div class="container">
   <div class="row">
     <!--ユーザー紹介-->
-    <div class="col-4">
+    <div class="col-3">
       <div class="col-5 mx-auto">
         <%= image_tag @user.get_user_image(100, 100),
             style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
       </div>
+        <h4><strong><%= @user.name %></strong></h4>
+        <p><%= @user.introduction %></p>
       <table class="table table-sm">
-        <tr>
-          <th class="col-5">ニックネーム</th>
-          <th><%= @user.name %></th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>紹介文</th>
-          <th><%= @user.introduction %></th>
-        </tr>
-        <tr></tr>
         <tr>
           <th>投稿数</th>
           <th><%= @recipes.published.count %></th>
-          <th><!--いいね一覧--></th>
-        </tr>
-        <tr>
-          <th>いいね</th>
-          <th></th>
         </tr>
         <!--フォロー、いいね-->
         <tr>
@@ -36,6 +23,7 @@
           <th><%= link_to "#{ @user.followers.count}", user_followers_path(@user.id) %></th>
         </tr>
       </table>
+      <%= link_to "マイリスト", favorites_user_path(@user), class: "btn btn-outline-info" %>
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
       <% end %>
