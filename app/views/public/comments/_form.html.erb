@@ -1,0 +1,4 @@
+<%= form_with(model: [@recipe, @comment], local: false)  do |f| %>
+ <%= f.text_area :recipe_comment, rows: '5', placeholder: "コメントはこちらに" %>
+ <%= f.submit "送信" %>
+<% end %>
