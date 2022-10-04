@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
+
+  devise_scope :user do
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   devise_for :admins,skip:[:registrations, :passwords], controllers:{
     sessions: "admin/sessions"
   }
@@ -12,8 +17,8 @@ Rails.application.routes.draw do
       resource :relationships, only:[:create, :destroy]
       get 'relationships/followings', as: 'followings'
       get 'relationships/followers', as: 'followers'
-      
-      member do 
+
+      member do
         get :favorites
       end
     end

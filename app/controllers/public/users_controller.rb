@@ -1,11 +1,11 @@
 class Public::UsersController < ApplicationController
 
-
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.order(created_at: "DESC")
-    @favorite = 0
-    #いいね総数
+
+    #いいね総数表示
+    #@favorite = 0
     #@fav_recipes = current_user.recipes
     #@fav_recipes.each do |recipe|
      # @favorite += recipe.favorites.count
@@ -39,6 +39,13 @@ class Public::UsersController < ApplicationController
 
   def user_params
   params.require(:user).permit(:name, :introduction, :user_image)
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name = "guestuser"
+      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
   end
 
 end
