@@ -1,7 +1,16 @@
 class Public::UsersController < ApplicationController
+  
+  
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.order(created_at: "DESC")
+    @favorite = 0
+    @recipes.each do |recipe|
+      @favorite += recipe.favorites.size
+    end
+    
+    
+    
   end
 
   def index
