@@ -17,7 +17,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.published.order(created_at: "DESC")
+    @recipes = Recipe.published.page(params[:page]).order(created_at: "DESC")
   end
 
   def show
@@ -26,7 +26,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def confirm
-    @recipes = current_user.recipes.draft
+    @recipes = current_user.recipes.draft.page(params[:page])
   end
 
   def edit

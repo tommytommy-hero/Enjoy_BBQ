@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recipes = @user.recipes.order(created_at: "DESC")
+    @recipes = @user.recipes.page(params[:page]).order(created_at: "DESC")
 
     #いいね総数表示
     #@favorite = 0
@@ -15,11 +15,11 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
-    @recipes = Recipe.find(favorites)
+    @recipes = Recipe.find(favorites).page(params[:page])
   end
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def edit

@@ -1,15 +1,30 @@
-<table class="table">
+<div class="row">
   <% recipes.each do |recipe| %>
-  <tr>
-    <th>
-      <%= link_to recipe_path(recipe.id) do %>
-        <%= image_tag recipe.get_recipe_image(80, 80) %>
-      <% end %>
-    </th>
-    <th><%= recipe.name %></th>
-    <th><%= recipe.genre.name %></th>
-    <th><%= recipe.favorites.count %></th>
-    <th><%= recipe.created_at.strftime('%m/%d %H:%M:%S') %></th>
-  </tr>
+    <div class="row mx-0">
+      <div class="col-12">
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= image_tag recipe.get_recipe_image(280, 210) ,
+          style: "border-radius: 20px;" %>
+        <% end %>
+        <div class="row">
+          <p class="col-6"><%= recipe.name %></p>
+          <div class="col-6">
+            by<%= image_tag recipe.user.get_user_image(40, 40),
+            style: "border-radius: 50%; object-fit:cover;" %>
+            <strong><%= recipe.user.name %></strong>
+          </div>
+        </div>
+        <p><%= recipe.genre.name %></p>
+        <p><%= recipe.introduction %></p>
+        <div class="count">
+          <div id="recipe_<%= recipe.id %>">
+            <%= render "public/favorites/favorites", recipe: recipe %>
+          </div>
+        </div>
+      </div><br>
+    </div>
   <% end %>
-</table>
+</div>
+<div class="row justify-content-center mt-5">
+  <%= paginate recipes, theme: 'bootstrap-5' %>
+</div>
