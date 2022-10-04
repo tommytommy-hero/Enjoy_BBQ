@@ -8,6 +8,13 @@
       <div id="recipe_<%= @recipe.id %>">
         <%= render "public/favorites/favorites", recipe: @recipe %>
       </div>
+    <!--コメント機能-->
+      <div class="recipe_index">
+        <%= render "public/comments/index", recipe: @recipe %>
+      </div>
+      <div>
+        <%= render "public/comments/form" %>
+      </div>
     </div>
 
     <div class="col-6">
