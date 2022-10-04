@@ -1,5 +1,7 @@
+<h1>マイリスト一覧</h1>
+<%= @user.favorites.count %>
 <table class="table">
-  <% recipes.each do |recipe| %>
+  <% @recipes.each do |recipe| %>件
   <tr>
     <th>
       <%= link_to recipe_path(recipe.id) do %>
@@ -8,8 +10,9 @@
     </th>
     <th><%= recipe.name %></th>
     <th><%= recipe.genre.name %></th>
-    <th><%= recipe.favorites.count %></th>
-    <th><%= recipe.created_at.strftime('%m/%d %H:%M:%S') %></th>
+    <th>
+    </th>
+    <th></th>
   </tr>
   <% end %>
 </table>
