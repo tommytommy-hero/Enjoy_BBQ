@@ -4,6 +4,11 @@ ja:
       status:
         published: '投稿'
         draft: '下書き保存'
+    contact:
+      process_status:
+        confirming: '確認中'
+        responding: '対応中'
+        finished: '対応済み'
   views:
     pagination:
         first: '最初'
