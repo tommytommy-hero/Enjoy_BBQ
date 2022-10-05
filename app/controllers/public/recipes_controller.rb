@@ -1,4 +1,5 @@
 class Public::RecipesController < ApplicationController
+
   def new
     @recipe = Recipe.new
     @genres = Genre.all
@@ -17,7 +18,15 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.published.page(params[:page]).order(created_at: "DESC")
+    @genres = Genre.all
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      all_recipes = @genre.recipes
+    else
+      all_recipes = Recipe.all
+    end
+    @recipes = all_recipes.published.page(params[:page]).order(created_at: "DESC")
+
   end
 
   def show
@@ -52,6 +61,10 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path
+  end
+
+  def search
+    @results = @q.result.page(params[:page])
   end
 
   private

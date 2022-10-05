@@ -1,0 +1,13 @@
+<h2>検索結果</h2>
+<% if @results.exists? %>
+<div class="container">
+  <%= render "public/recipes/index", recipes: @results %>
+</div>
+
+<% else %>
+  <p>検索結果はありません</p>
+<% end %>
+
+<div class="row justify-content-center mt-5">
+  <%= paginate @results, theme: 'bootstrap-5' %>
+</div>
