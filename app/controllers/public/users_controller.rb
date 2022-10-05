@@ -15,11 +15,12 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
-    @recipes = Recipe.find(favorites).page(params[:page])
+    @recipes = Recipe.find(favorites)
+    @recipes = Kaminari.paginate_array(@recipes).page(params[:page])
   end
 
   def index
-    @users = User.page(params[:page])
+    @users = User.where.not(id: current_user.id).page(params[:page])
   end
 
   def edit

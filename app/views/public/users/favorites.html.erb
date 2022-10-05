@@ -1,18 +1,10 @@
 <h1>マイリスト一覧</h1>
 <%= @user.favorites.count %>
-<table class="table">
-  <% @recipes.each do |recipe| %>件
-  <tr>
-    <th>
-      <%= link_to recipe_path(recipe.id) do %>
-        <%= image_tag recipe.get_recipe_image(80, 80) %>
-      <% end %>
-    </th>
-    <th><%= recipe.name %></th>
-    <th><%= recipe.genre.name %></th>
-    <th>
-    </th>
-    <th></th>
-  </tr>
-  <% end %>
-</table>
+<div class="container">
+  <%= render "public/recipes/index", recipes: @recipes %>
+</div>
+
+
+<div class="row justify-content-center mt-5">
+  <%= paginate @recipes, theme: 'bootstrap-5' %>
+</div>
