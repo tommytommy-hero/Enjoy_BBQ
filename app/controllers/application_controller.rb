@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def set_q
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result
   end
 
   protected

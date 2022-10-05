@@ -5,7 +5,10 @@ class Admin::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-
+  end
+  
+  def search
+    @results = @q.result.page(params[:page])
   end
 
   def destroy

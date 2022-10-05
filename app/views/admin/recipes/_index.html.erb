@@ -1,0 +1,23 @@
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>レシピ名</th>
+          <th>ユーザー</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% recipes.each do |recipe| %>
+        <tr>
+          <td><%= link_to admin_recipe_path(recipe.id) do %>
+                <%= image_tag recipe.get_recipe_image(100, 100) ,
+                style: "border-radius: 20px;" %>
+              <% end %>
+          </td>
+          <td><%= recipe.name %></td>
+          <td><%= recipe.user.name %></td>
+          <td><%= recipe.status_i18n %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
