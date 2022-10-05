@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q, only: [:index, :search, :show]
 
   def index
     @users = User.all
@@ -8,18 +8,15 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.order(created_at: "DESC")
-  end
-
-  def edit
-    @user = User.find(params[:id])
+    @results = @q.result
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_users_path
+      redirect_to request.referer
     else
-      render 'edit'
+      render 'index'
     end
   end
 
@@ -28,7 +25,7 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  
+
   def set_q
     @q = User.ransack(params[:q])
   end
