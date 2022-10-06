@@ -2,7 +2,7 @@ class Public::ContactsController < ApplicationController
 
   def index
     @contact = Contact.new
-    @contacts = Contact.all
+    @contacts = Contact.all.order(created_at: "DESC")
   end
 
   def create

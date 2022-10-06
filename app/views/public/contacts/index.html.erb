@@ -18,7 +18,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th class="col-md-6">投稿内容</th>
+            <th>投稿内容</th>
             <th>投稿日時</th>
             <th>対応状況</th>
           </tr>
@@ -26,9 +26,9 @@
         <tbody>
           <% @contacts.each do |contact| %>
           <tr>
-            <th><%= contact.content %></th>
-            <th><%= contact.created_at.strftime("%Y年%m月%d日") %></th>
-            <th><%= contact.process_status_i18n %></th>
+            <th class="col-md-4"><%= contact.content %></th>
+            <th class="col-md-4"><%= contact.created_at.strftime("%Y/%m/%d") %></th>
+            <th class="col-md-3"><%= contact.process_status_i18n %></th>
           </tr>
           <% end %>
         </tbody>
