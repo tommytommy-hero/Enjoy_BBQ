@@ -6,7 +6,7 @@
         <%= f.label :レシピ名 %>
         <%= f.text_field :name %><br>
         <%= f.label :レシピ紹介 %>
-        <%= f.text_field :introduction %><br>
+        <%= f.text_area :introduction %><br>
         <%= f.file_field :recipe_image, accept: "image/*" %><br>
         <%= f.label :ジャンル %>
         <%= f.collection_select :genre_id, genres, :id, :name, include_blank: "--選択してください--" %>

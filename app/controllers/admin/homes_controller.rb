@@ -1,5 +1,7 @@
 class Admin::HomesController < ApplicationController
+
   def top
-    @users = User.all
+    @contacts = Contact.all.order(created_at: :desc)
   end
+
 end

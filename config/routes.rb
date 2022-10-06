@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         post 'confirm'
       end
     end
+    resources :contacts, only:[:create, :index]
 
     root to: 'homes#top'
     get 'about' => 'homes#about'
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
     resources :recipes, only:[:index,:show, :edit, :update, :destroy] do
       resources :comments, only:[:destroy]
     end
+    resources :contacts, only:[:show, :index, :update]
     root to: 'homes#top'
   end
 
