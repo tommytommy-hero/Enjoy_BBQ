@@ -4,10 +4,14 @@ class Admin::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
   end
 
+  def index
+    @contacts = Contact.all.order(created_at: :desc)
+  end
+
   def update
     @contact = Contact.find(params[:id])
     @contact.update(contact_params)
-    redirect_to request.referer
+    redirect_to admin_root_path
   end
 
   private

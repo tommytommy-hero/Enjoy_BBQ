@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     resources :recipes, only:[:index,:show, :edit, :update, :destroy] do
       resources :comments, only:[:destroy]
     end
-    resources :contacts, only:[:show, :update]
+    resources :contacts, only:[:show, :index, :update]
     root to: 'homes#top'
   end
 

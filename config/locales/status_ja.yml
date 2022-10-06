@@ -7,7 +7,6 @@ ja:
     contact:
       process_status:
         confirming: '確認中'
-        responding: '対応中'
         finished: '対応済み'
   views:
     pagination:

@@ -3,12 +3,11 @@
     <div class="col-4">
       <table>
         <tr>
-          <th>確認中<%= @contacts.confirming.count %>件
-          </th>
-          <th>対応済み<%= link_to admin_contacts_path do %>
-                <%= @contacts.finished.count %>件
+          <th>確認中<%= link_to admin_root_path do %>
+                <%= @contacts.confirming.count %>件
               <% end %>
           </th>
+          <th>対応済み<%= @contacts.finished.count %>件</th>
         </tr>
       </table>
     </div>
@@ -23,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @contacts.confirming.each do |contact| %>
+        <% @contacts.finished.each do |contact| %>
           <tr>
             <th><%= contact.user.name %></th>
             <th><%= contact.user.email %></th>
@@ -37,5 +36,3 @@
     </div>
   </div>
 </div>
-
-
