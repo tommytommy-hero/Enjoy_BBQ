@@ -1,67 +1,76 @@
-<div class="container">
-  <h1>詳細ページ</h1>
   <div class="row">
-    <div class="col-6">
-      <%= image_tag @recipe.get_recipe_image(300,300) %>
-    <!--フォロー機能-->
-      <div id="recipe_<%= @recipe.id %>">
-        <%= render "public/favorites/favorites", recipe: @recipe %>
+    <div class="col-5 mx-auto">
+      <h1 class="text-center"><%= @recipe.name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="text-center"><%= image_tag @recipe.get_recipe_image(600,400) %></div><br>
+        <!--レシピ手順-->
+      <table class="table table-recipe">
+        <thead>
+          <tr>
+            <th class="col-1"></th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @recipe.steps.each.with_index(1) do |step, i| %>
+          <tr>
+            <td class="text-center">
+            <div class="step-number"><%= i %></div>
+            </td>
+            <td><%= step.explanation %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <div id="recipe_<%= @recipe.id %>" class="favorite">
+            <%= render "public/favorites/favorites", recipe: @recipe %>
+          </div>
+          <div class="recipe_flame mt-5">
+            <%= @recipe.introduction %>
+          </div>
+        　<!--レシピ材料-->
+          <table class="table table-sm table-recipe">
+            <thead>
+              <tr>
+                <th>材料</th>
+                <th class="text-right">個数</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @recipe.ingredients.each do |ingredient| %>
+              <tr>
+                <td><%= ingredient.name %></td>
+                <td class="text-right"><%= ingredient.amount %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-    <!--コメント機能-->
+      <% if @recipe.user == current_user %>
+        <div class="form-btn text-center">
+          <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
+          <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <!--コメント機能-->
+      <h3>コメント欄</h3>
       <div class="recipe_index">
         <%= render "public/comments/index", recipe: @recipe %>
-      </div>
-      <div>
+      </div><br>
+      <div class="row">
         <%= render "public/comments/form" %>
       </div>
     </div>
-
-    <div class="col-6">
-        <h2><%= @recipe.name %></h2>
-        <h3><%= @recipe.genre.name %></h3>
-        <h4>材料</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>材料</th>
-              <th>個数</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @recipe.ingredients.each do |ingredient| %>
-            <tr>
-              <td><%= ingredient.name %></td>
-              <td><%= ingredient.amount %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <h4>手順</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>ステップ</th>
-              <th>説明</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @recipe.steps.each do |step| %>
-            <tr>
-              <td><%= step.number %></td>
-              <td><%= step.explanation %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-
-
-        <% if @recipe.user == current_user %>
-          <div class="form-btn">
-            <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
-            <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger" %>
-          </div>
-        <% end %>
-    </div>
-
   </div>
-</div>
