@@ -3,10 +3,32 @@
    background: #deb887;
  }
 
+.size {
+  font-size: 2em;
+  color: black;
+}
+
  main {
    padding : 20px;
    min-height: 1000px;
    background: #ffffe0;
+ }
+
+ .form {
+  background: white;
+  padding: 10px;
+ }
+
+ .table-recipe {
+  background: white;
+ }
+
+.favorite {
+ font-size: 30px;
+}
+
+ .recipe_flame {
+  background: white;
  }
 
  .genre_flame {

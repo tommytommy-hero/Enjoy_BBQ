@@ -39,6 +39,7 @@
           <h4>投稿レシピ一覧　<%= @recipes.count %>件</h4>
         </div>
         <div class="col-5 offset-1">
+          <%= link_to "下書き一覧",confirm_recipes_path, class: "btn btn-outline-primary" %>
           <%= link_to "新規投稿", new_recipe_path, class: "btn btn-success" %>
         </div>
       </div><br>

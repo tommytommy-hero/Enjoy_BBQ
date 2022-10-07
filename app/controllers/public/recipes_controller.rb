@@ -25,7 +25,7 @@ class Public::RecipesController < ApplicationController
     else
       all_recipes = Recipe.all
     end
-    @recipes = all_recipes.published.page(params[:page]).order(created_at: "DESC")
+    @recipes = all_recipes.published.page(params[:page])
 
   end
 
