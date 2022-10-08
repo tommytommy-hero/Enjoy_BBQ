@@ -2,14 +2,14 @@
   <table class="table">
     <% recipe.comments.each do |comment| %>
     <tr>
-      <th>
+      <th class="col-md-2">
         <%= image_tag comment.user.get_user_image(35, 35),
             style: "border-radius: 50%; object-fit:cover;" %>
         <%= comment.user.name %>
       </th>
-      <th><%= comment.recipe_comment %></th>
+      <th class="col-md-8"><%= comment.recipe_comment %></th>
       <% if comment.user == current_user %>
-      <th><%= link_to "削除", recipe_comment_path(recipe, comment), method: :delete,
+      <th class="col-md-2"><%= link_to "削除", recipe_comment_path(recipe, comment), method: :delete,
           class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"}, remote: true %>
       </th>
       <% end %>

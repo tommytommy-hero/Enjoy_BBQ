@@ -4,7 +4,7 @@ class Admin::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.page(params[:page])
   end
   
   def search

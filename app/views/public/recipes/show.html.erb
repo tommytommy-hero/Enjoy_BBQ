@@ -1,38 +1,37 @@
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 show_view">
       <h1><%= @recipe.name %></h1>
+      <% if user_signed_in? %>
+      <div class="count_show">
+        <div id="recipe_<%= @recipe.id %>">
+          <%= render "public/favorites/favorites", recipe: @recipe %>
+        </div>
+      </div>
+      <% end %>
+      <div class="user_name">by
+        <strong>
+          <%= link_to user_path(@recipe.user.id) do %>
+            <%= @recipe.user.name %>
+          <% end %>
+        </strong>
+      </div>
     </div>
-          <!--いいね-->
-      <div class="col-md-3">
-          <div id="recipe_<%= @recipe.id %>" class="favorite">
-            <%= render "public/favorites/favorites", recipe: @recipe %>
-          </div>
-    </div>
-
   </div>
+
   <div class="row">
     <div class="col-md-6">
-      <div class="text-center"><%= image_tag @recipe.get_recipe_image(600,400) %></div><br>
-        <!--レシピ手順-->
-      <table class="table table-recipe">
-        <thead>
-          <tr>
-            <th class="col-1"></th>
-            <th>説明</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @recipe.steps.each.with_index(1) do |step, i| %>
-          <tr>
-            <td class="text-center">
-            <div class="step-number"><%= i %></div>
-            </td>
-            <td><%= step.explanation %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+      <div class="image_tag">
+        <div class="text-center">
+          <%= image_tag @recipe.get_recipe_image(600,400) %>
+        </div>
+        <div class="user_image">
+          <%= image_tag @recipe.user.get_user_image(60, 60),
+          style: "border-radius: 50%; object-fit:cover;" %>
+        </div>
+      </div>
     </div>
+    <!--レシピ紹介、材料-->
     <div class="col-md-5">
       <div class="row">
         <div class="col-md-10 mx-auto">
@@ -66,16 +65,41 @@
         </div>
       <% end %>
     </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-md-5">
+        <!--レシピ手順-->
+      <table class="table table-recipe">
+        <thead>
+          <tr>
+            <th class="col-1"></th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @recipe.steps.each.with_index(1) do |step, i| %>
+          <tr>
+            <td class="text-center">
+            <div class="step-number"><%= i %></div>
+            </td>
+            <td><%= step.explanation %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <!--コメント機能-->
-      <h3>コメント欄</h3>
+      <h4>コメント欄</h4>
       <div class="recipe_index">
         <%= render "public/comments/index", recipe: @recipe %>
       </div><br>
-      <div class="row">
+      <div class="row comment_form">
         <%= render "public/comments/form" %>
       </div>
     </div>
   </div>
+</div>

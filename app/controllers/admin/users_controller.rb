@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_q, only: [:index, :search, :show]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page])
   end
 
   def show

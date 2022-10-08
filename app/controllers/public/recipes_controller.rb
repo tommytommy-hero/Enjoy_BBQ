@@ -25,7 +25,7 @@ class Public::RecipesController < ApplicationController
     else
       all_recipes = Recipe.all
     end
-    @recipes = all_recipes.published.page(params[:page])
+    @recipes = all_recipes.published.order(created_at: "DESC").page(params[:page])
 
   end
 
@@ -35,7 +35,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def confirm
-    @recipes = current_user.recipes.draft.page(params[:page])
+    @recipes = current_user.recipes.draft.order(created_at: "DESC").page(params[:page])
   end
 
   def edit
