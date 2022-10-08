@@ -1,6 +1,12 @@
  header {
    width: 100%;
-   background: #deb887;
+   background: #990000;
+ }
+
+ .nav-item a{
+  color: white;
+  font-size: 20px;
+  margin-left: 10px;
  }
 
 .size {
@@ -14,6 +20,38 @@
    background: #ffffe0;
  }
 
+ .image_tag{
+  display:flex;
+ }
+
+ .comment_form{
+  display: flex;
+ }
+
+ .count_show {
+  margin-left: 20px;
+  margin-right: 60px;
+  font-size: 30px;
+ }
+ .recipe_name{
+  font-size: 1.2em;
+ }
+
+ .user_name_link a{
+  color: black;
+ }
+
+ .user_name {
+  font-size: 30px;
+ }
+
+ .user_image{
+  position: absolute;
+ }
+
+ .show_view{
+  display:flex;
+ }
  .form {
   background: white;
   padding: 10px;
@@ -32,18 +70,34 @@
  }
 
  .genre_flame {
-  display: flex;
+  display:flex;
  }
 
  .genre_flame_waku {
   margin: 15px;
   font-size: 20px;
-  border: 1px solid black;
+  background: #990000;
   border-radius: 10px;
+  padding: 2px;
  }
+ .genre_flame_waku a{
+  color: white;
+ }
+
+.contact_table{
+ font-size: 25px;
+ margin: 10px auto;
+ padding: 20px;
+}
+
+.contact_table_item{
+ padding: 20px;
+}
 
  footer {
    width: 100%;
-   background: #deb887;
+   background: #990000;
    text-align: center;
+   color: white;
  }
+

@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <!--ユーザー紹介-->
-    <div class="col-3">
+    <div class="col-2">
       <div class="col-5 mx-auto">
         <%= image_tag @user.get_user_image(100, 100),
             style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
@@ -32,7 +32,7 @@
       <% end %>
     </div>
         <!--投稿一覧-->
-    <div class="col-9">
+    <div class="col-9 offset-1">
       <div class="row">
       <% if @user == current_user %>
         <div class="col-6">
