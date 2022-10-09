@@ -1,59 +1,96 @@
-<h1>Admin::Recipes#show</h1>
-<p>Find me in app/views/admin/recipes/show.html.erb</p>
-<div class="container">
-  <h1>詳細ページ</h1>
+<div class="container-fluid">
   <div class="row">
-    <div class="col-6">
-      <%= image_tag @recipe.get_recipe_image(300,300) %>
-          <!--コメント機能-->
-      <div class="recipe_index">
-        <%= render "admin/comments/index", recipe: @recipe %>
+    <div class="col-md-6 show_view">
+      <h1><%= @recipe.name %></h1>
+
+      <div class="user_name">by
+        <strong>
+          <%= link_to admin_user_path(@recipe.user.id) do %>
+            <%= @recipe.user.name %>
+          <% end %>
+        </strong>
       </div>
     </div>
-    <div class="col-6">
-        <h2><%= @recipe.name %></h2>
-        <h3><%= @recipe.genre.name %></h3>
-        <h4>材料</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>材料</th>
-              <th>個数</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @recipe.ingredients.each do |ingredient| %>
-            <tr>
-              <td><%= ingredient.name %></td>
-              <td><%= ingredient.amount %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <h4>手順</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>ステップ</th>
-              <th>説明</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @recipe.steps.each do |step| %>
-            <tr>
-              <td><%= step.number %></td>
-              <td><%= step.explanation %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+  </div>
 
-          <div class="form-btn">
-            <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
-            <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"} %>
-          </div>
-
+  <div class="row">
+    <div class="col-md-6">
+      <div class="image_tag">
+        <div class="text-center">
+          <%= image_tag @recipe.get_recipe_image(600,400) %>
+        </div>
+        <div class="user_image">
+          <%= image_tag @recipe.user.get_user_image(60, 60),
+          style: "border-radius: 50%; object-fit:cover;" %>
+        </div>
+      </div>
     </div>
+    <!--レシピ紹介、材料-->
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
 
+          <div class="recipe_flame mt-5">
+            <%= @recipe.introduction %>
+          </div>
+        　<!--レシピ材料-->
+          <table class="table table-sm table-recipe">
+            <thead>
+              <tr>
+                <th>材料</th>
+                <th>個数</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @recipe.ingredients.each do |ingredient| %>
+              <tr>
+                <td><%= ingredient.name %></td>
+                <td><%= ingredient.amount %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <% if @recipe.user == current_user %>
+        <div class="form-btn text-center">
+          <%= link_to "編集", edit_admin_recipe_path, class: "btn btn-success" %>
+          <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-md-5">
+        <!--レシピ手順-->
+      <table class="table table-recipe">
+        <thead>
+          <tr>
+            <th class="col-1"></th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @recipe.steps.each.with_index(1) do |step, i| %>
+          <tr>
+            <td class="text-center">
+            <div class="step-number"><%= i %></div>
+            </td>
+            <td><%= step.explanation %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <!--コメント機能-->
+      <h4>コメント欄</h4>
+      <div class="recipe_index">
+        <%= render "admin/comments/index", recipe: @recipe %>
+      </div><br>
+    </div>
   </div>
 </div>

@@ -1,22 +1,24 @@
-<table class="table">
+<table class="table text-center">
   <tr>
-    <th class="col-2">ユーザー名</th>
-    <th class="col-3">紹介文</th>
+    <th class="col-3">ユーザー名</th>
     <th class="col-3">メールアドレス</th>
     <th>投稿数</th>
+    <th>利用開始日</th>
     <th>利用状況</th>
   </tr>
   <% users.each do |user| %>
   <tr>
-    <td><%= link_to admin_user_path(user.id) do %>
+    <td class="text-center"><%= link_to admin_user_path(user.id) do %>
+        <div class="admin_user_image">
           <%= image_tag user.get_user_image(80, 80),
           style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;" %>
-          <%= user.name %>
+        </div>
+        <div class="admin_user_name"><%= user.name %></div>
         <% end %>
     </td>
-    <td><%= user.introduction %></td>
     <td><%= user.email %></td>
     <td><%= user.recipes.published.count %></td>
+    <td><%= user.created_at.strftime("%Y年%m月%d日") %></td>
     <td><% if user.is_active == true %>
           <p class="text-succsess font-weight-bold">有効</p>
         <% else %>

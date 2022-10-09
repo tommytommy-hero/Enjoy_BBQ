@@ -4,9 +4,9 @@ class Admin::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.page(params[:page])
+    @recipes = Recipe.order(created_at: "DESC").page(params[:page])
   end
-  
+
   def search
     @results = @q.result.page(params[:page])
   end
