@@ -1,24 +1,22 @@
-<h1>問い合わせフォーム</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-md-8 mx-auto">
       <%= form_with model: @contact, local: true do |f| %>
       <div class="form-group">
-        <%= f.label :お問い合わせ内容 %><br>
-        <%= f.text_area :content %>
-      </div>
-      <div class="form-btn ">
-        <%= f.submit "送信", data: {confirm: "下記の内容で送信します。"}, class: "btn btn-success" %>
+        <%= f.label :お問い合わせ内容 %><br><br>
+        <%= f.text_area :content, cols: "60",rows: "4" %>
+        <%= f.submit "送信", data: {confirm: "下記の内容で送信します。"}, class: "btn btn-success", style: "margin-bottom: 30px;" %>
       </div>
       <% end %>
     </div>
+    <div class="text-center flash"><%= flash[:notice] %></div>
   </div><br>
   <div class="row">
     <div class="col-md-8 mx-auto">
       <table class="table">
         <thead>
           <tr>
-            <th>投稿内容</th>
+            <th class="col-md-8">投稿内容</th>
             <th>投稿日時</th>
             <th>対応状況</th>
           </tr>
@@ -26,14 +24,13 @@
         <tbody>
           <% @contacts.each do |contact| %>
           <tr>
-            <th class="col-md-4"><%= contact.content %></th>
-            <th class="col-md-4"><%= contact.created_at.strftime("%Y/%m/%d") %></th>
-            <th class="col-md-3"><%= contact.process_status_i18n %></th>
+            <td><%= contact.content %></td>
+            <td><%= contact.created_at.strftime("%Y/%m/%d") %></td>
+            <td><%= contact.process_status_i18n %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>

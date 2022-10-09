@@ -36,7 +36,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
         <%= search_form_for @q, url: search_admin_users_path do |f| %>
-          <%= f.label :ユーザー %>
+          <%= f.label :ユーザー, style: "color: white;" %>
           <%= f.search_field :name_cont %>
           <%= f.submit '検索' %>
         <% end %>

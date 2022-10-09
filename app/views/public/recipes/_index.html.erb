@@ -1,28 +1,24 @@
 <div class="row">
   <% recipes.each do |recipe| %>
-      <div class="col-md-4">
-        <div class="image_tag">
+      <div class="col-md-4 image_index">
+        <div class="row-fluid">
           <div class="text-center">
             <%= link_to recipe_path(recipe.id) do %>
-              <%= image_tag recipe.get_recipe_image(240, 180) ,
+              <%= image_tag recipe.get_recipe_image(280, 180) ,
               style: "border-radius: 20px;" %>
             <% end %>
           </div>
-          <div class="user_image">
-              <%= image_tag recipe.user.get_user_image(40, 40),
-              style: "border-radius: 50%; object-fit:cover;" %>
-          </div>
         </div>
-        <div class="row ">
-          <p class="col-6 recipe_name"><%= recipe.name %></p>
+        <div class="row">
+          <p class="col-md-4 offset-1 recipe_name"><%= recipe.name %></p>
           <% if user_signed_in? %>
-          <div class="count">
+          <div class="col-md-3 count">
             <div id="recipe_<%= recipe.id %>">
               <%= render "public/favorites/favorites", recipe: recipe %>
             </div>
           </div>
           <% end %>
-          <div class="col-4 user_name_link">by
+          <div class="col-md-4 user_name_link">by
             <strong>
               <%= link_to user_path(recipe.user.id) do %>
                 <%= recipe.user.name %>
@@ -30,7 +26,7 @@
             </strong>
           </div>
         </div>
-      </div>
+      </div><br>
   <% end %>
 </div>
 
