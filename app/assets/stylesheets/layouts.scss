@@ -20,6 +20,10 @@
    background: #ffffe0;
  }
 
+ h2{
+  text-align: center;
+ }
+
  .flash{
   text-decoration: underline;
  }
@@ -46,8 +50,9 @@ table td {
   font-size: 30px;
  }
  .recipe_name{
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-weight: 900;
+  padding-left: 0px;
  }
 .no-gutters {
   margin-right: 0;
@@ -56,6 +61,7 @@ table td {
 
  .user_name_link a{
   color: black;
+  text-decoration: underline;
  }
 
  .user_name {

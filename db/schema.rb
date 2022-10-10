@@ -53,72 +53,72 @@ ActiveRecord::Schema.define(version: 2022_10_05_225056) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "recipe_id"
-    t.text "recipe_comment"
+    t.integer "user_id", null: false
+    t.integer "recipe_id", null: false
+    t.text "recipe_comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "user_id"
-    t.text "content"
-    t.integer "process_status", default: 0
+    t.integer "user_id", null: false
+    t.text "content", null: false
+    t.text "memo"
+    t.integer "process_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "recipe_id"
+    t.integer "user_id", null: false
+    t.integer "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
     t.integer "recipe_id"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.string "name"
-    t.string "amount"
+    t.integer "recipe_id", null: false
+    t.string "name", null: false
+    t.string "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "genre_id"
-    t.string "name"
-    t.text "introduction"
-    t.integer "status", default: 0
+    t.integer "user_id", null: false
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "steps", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "number"
-    t.text "explanation"
+    t.integer "recipe_id", null: false
+    t.text "explanation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "introduction"
-    t.boolean "is_active", default: true
+    t.boolean "is_active", default: true, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -17,6 +17,6 @@ class Admin::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:process_status)
+    params.require(:contact).permit(:process_status, :memo)
   end
 end

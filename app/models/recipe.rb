@@ -7,6 +7,9 @@ class Recipe < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
+  
+  validates :name, presence: true
+  validates :introduction, length: { maximum: 200 }, presence: true
 
   accepts_nested_attributes_for :ingredients, :steps, allow_destroy: true
 

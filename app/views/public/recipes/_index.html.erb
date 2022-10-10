@@ -10,15 +10,15 @@
           </div>
         </div>
         <div class="row">
-          <p class="col-md-4 offset-1 recipe_name"><%= recipe.name %></p>
+          <p class="col-md-5 offset-1 px-0 recipe_name"><%= recipe.name %></p>
           <% if user_signed_in? %>
-          <div class="col-md-3 count">
+          <div class="col-md-2 px-0 count">
             <div id="recipe_<%= recipe.id %>">
               <%= render "public/favorites/favorites", recipe: recipe %>
             </div>
           </div>
           <% end %>
-          <div class="col-md-4 user_name_link">by
+          <div class="col-md-4 px-0 user_name_link">by
             <strong>
               <%= link_to user_path(recipe.user.id) do %>
                 <%= recipe.user.name %>

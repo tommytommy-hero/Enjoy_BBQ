@@ -1,9 +1,7 @@
-<div class="container">
-  <div class="row">
-    <h2>ログイン</h2>
-  </div>
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-6 mx-auto">
+      <h2>ログイン</h2>
     <%= form_with model: @user, url: user_session_path do |f| %>
       <table class="table">
         <tr>
