@@ -1,8 +1,9 @@
 <% if recipe.comments.exists? %>
+  <h4>コメント<%= @recipe.comments.count %>件</h4>
   <table class="table">
     <% recipe.comments.each do |comment| %>
     <tr>
-      <th class="col-md-2">
+      <th class="col-md-2 text-center">
         <%= image_tag comment.user.get_user_image(35, 35),
             style: "border-radius: 50%; object-fit:cover;" %>
         <%= comment.user.name %>
@@ -17,5 +18,6 @@
     <% end %>
   </table>
 <% else %>
+  <h4>コメント</h4>
   <p>コメントはまだありません</p>
 <% end %>

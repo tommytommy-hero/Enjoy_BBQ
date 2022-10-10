@@ -15,6 +15,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to request.referer
+      flash[:notice] = "内容を変更しました。"
     else
       render 'index'
     end

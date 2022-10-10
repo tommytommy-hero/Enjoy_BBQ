@@ -1,4 +1,6 @@
 class Public::RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def new
     @recipe = Recipe.new
@@ -73,6 +75,13 @@ class Public::RecipesController < ApplicationController
     params.require(:recipe).permit(:user_id, :name, :introduction, :genre_id, :recipe_image, :status,
     ingredients_attributes:[:id, :name, :amount, :_destroy],
     steps_attributes:[:id, :number, :explanation, :_destroy])
+  end
+
+  def ensure_current_user
+    @recipe = Recipe.find(params[:id])
+    unless @recipe.user == current_user
+      redirect_to recipes_path
+    end
   end
 
 end

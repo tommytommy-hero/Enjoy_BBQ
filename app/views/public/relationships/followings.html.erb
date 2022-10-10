@@ -1,9 +1,11 @@
 <div class="container">
-  <div class="row mx-auto">
+  <div class="row">
+    <div class="col-8 mx-auto">
     <% if @users.exists? %>
       <%= render "public/users/index", users: @users %>
     <% else %>
       <h4 class="mx-auto">ユーザーはいません</h4>
     <% end %>
+    </div>
   </div>
 </div>
