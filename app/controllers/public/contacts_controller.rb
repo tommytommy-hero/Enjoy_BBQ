@@ -10,7 +10,7 @@ class Public::ContactsController < ApplicationController
     @contact.user_id = current_user.id
     if @contact.save
       redirect_to request.referer
-      flash[:notice] = "お問合せありがとうございます。
+      flash[:contact] = "お問合せありがとうございます。
                         後ほどメールにてご連絡差し上げますので今しばらくお待ちください。"
     else
       @contacts = Contact.all

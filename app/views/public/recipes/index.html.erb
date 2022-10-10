@@ -6,10 +6,9 @@
   <% end %>
 </div>
 <div class="container">
-  <div class="text-right">
-    <%= link_to "レシピ作成", new_recipe_path,  class:"btn btn-success" %>
-  </div><br>
-<%= render 'public/recipes/index', recipes: @recipes %>
+  <div class="row">
+    <%= render 'public/recipes/index', recipes: @recipes %>
+  </div>
 </div>
 <div class="row justify-content-center mt-5">
   <%= paginate @recipes, theme: 'bootstrap-5' %>

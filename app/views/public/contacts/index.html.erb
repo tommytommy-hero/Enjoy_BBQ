@@ -1,7 +1,6 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 mx-auto">
-
       <%= form_with model: @contact, local: true do |f| %>
       <div class="form-group offset-2">
         <div style="font-size: 20px;">お問合せ内容</div>
@@ -9,7 +8,7 @@
         <%= f.submit "送信", data: {confirm: "下記の内容で送信します。"}, class: "btn btn-success", style: "margin-bottom: 30px;" %>
       </div>
       <% end %>
-    <div class="text-center flash"><%= flash[:notice] %></div>
+    <div class="text-center flash"><%= flash[:contact] %></div>
     </div>
 
   </div><br>

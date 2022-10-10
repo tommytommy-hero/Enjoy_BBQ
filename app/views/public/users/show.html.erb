@@ -1,9 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <%= flash[:notice] %>
     <!--ユーザー紹介-->
-    <div class="col-2">
-      <div class="col-5 mx-auto">
+    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+      <div class="text-center">
         <%= image_tag @user.get_user_image(100, 100),
             style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
       </div>
@@ -31,22 +30,29 @@
     </div>
 
         <!--投稿一覧-->
-    <div class="col-9 offset-1">
-      <div class="row">
+    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
+      <div class="row-fluid">
       <% if @user == current_user %>
-        <div class="col-6">
-          <h4>投稿レシピ一覧　<%= @recipes.count %>件</h4>
-        </div>
-        <div class="col-5 offset-1 text-right">
-          <%= link_to "下書き一覧",confirm_recipes_path, class: "btn btn-outline-primary" %>
-          <%= link_to "レシピ作成", new_recipe_path, class: "btn btn-success" %>
+        <h4>投稿レシピ一覧　<%= @recipes.count %>件</h4>
+        <div>
+          <%= link_to "下書き一覧",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
+          <%= link_to "レシピ作成", new_recipe_path, class: "btn btn-success btn-sm" %>
         </div>
       </div><br>
-        <%= render 'public/recipes/index', recipes: @recipes.published %>
+        <% if @recipes.exists? %>
+        <div class="row">
+          <%= render 'public/recipes/index', recipes: @recipes.published %>
+        </div>
+        <% else %>
+          <h1 class="text-center mt-5">まだ投稿はありません。</h1>
+        <% end %>
       <% else %>
-      <div class="row">
+      <div class="row-fluid">
         <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4>
+      </div>
+      <div class="row">
         <%= render 'public/recipes/index', recipes: @recipes.published %>
+      </div>
       <% end %>
     </div>
   </div>
