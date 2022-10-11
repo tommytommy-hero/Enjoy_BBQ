@@ -28,18 +28,17 @@
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %><br><br>
       <% end %>
     </div>
-
         <!--投稿一覧-->
     <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
       <div class="row-fluid">
       <% if @user == current_user %>
-        <h4>投稿レシピ一覧　<%= @recipes.count %>件</h4>
+        <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4>
         <div>
-          <%= link_to "下書き一覧",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
+          <%= link_to "下書き#{@recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
           <%= link_to "レシピ作成", new_recipe_path, class: "btn btn-success btn-sm" %>
         </div>
       </div><br>
-        <% if @recipes.exists? %>
+        <% if @recipes.published.exists? %>
         <div class="row">
           <%= render 'public/recipes/index', recipes: @recipes.published %>
         </div>

@@ -1,19 +1,19 @@
   <%= form_with model: recipe, local: true do |f| %>
   <div class="row">
-    <div class="col-6">
+    <div class="col-sm-12 col-md-6 mb-4">
 
       <!--レシピ-->
       <div class="form">
         <div class="form-group">
-          <%= f.label :レシピ名, class: "col-4" %><br>
-          <%= f.text_field :name %>
+          <%= f.label :レシピ名 %><span class="need">※必須</span><br>
+          <%= f.text_field :name, placeholder: "例:きのこのホイル焼き" %>
         </div>
         <div class="form-group">
-          <%= f.label :レシピポイント, class: "col-4" %><br>
-          <%= f.text_area :introduction, cols: "35" %>
+          <%= f.label :レシピポイント %><span class="need">※必須</span><br>
+          <%= f.text_area :introduction, cols: "35", placeholder: "例:簡単お手軽！" %>
         </div>
         <div class="form-group">
-          <%= f.label :ジャンル, class: "col-4" %><br>
+          <%= f.label :ジャンル %><span class="need">※必須</span><br>
           <%= f.collection_select :genre_id, genres, :id, :name, include_blank: "--選択してください--" %>
         </div><br>
         <div class="form-group">
@@ -22,18 +22,10 @@
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-sm-12 col-md-6">
       <!--材料フォーム-->
       <div class="form">
-        <h4>材料</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>材料</th>
-              <th>分量</th>
-            </tr>
-          </thead>
-        </table>
+        <h4>材料</h4><span class="need">※必須</span>
         <div class="field">
           <%= f.fields_for :ingredients do |ingredient| %>
             <%= render "ingredient_fields", f: ingredient %>
@@ -46,8 +38,7 @@
 
       <!--作り方入力フォーム-->
       <div class="form">
-        <h4>作り方</h4>
-        <h5>手順</h5>
+        <h4>作り方</h4><span class="need">※必須</span>
           <div class="field">
             <%= f.fields_for :steps do |step| %>
               <%= render "step_fields", f: step %>

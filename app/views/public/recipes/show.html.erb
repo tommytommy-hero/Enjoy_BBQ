@@ -83,7 +83,7 @@
       <% if @recipe.user == current_user %>
         <div class="form-btn text-center">
           <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
-          <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger" %>
+          <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
         </div>
       <% end %>
     </div>
@@ -95,9 +95,11 @@
       <div class="recipe_index">
         <%= render "public/comments/index", recipe: @recipe %>
       </div><br>
+      <% if user_signed_in? %>
       <div class="comment_form">
         <%= render "public/comments/form" %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
