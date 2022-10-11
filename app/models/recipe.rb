@@ -1,13 +1,13 @@
 class Recipe < ApplicationRecord
 
   belongs_to :user
-  belongs_to :genre#, optional: true
+  belongs_to :genre, optional: true
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
-  
+
   validates :name, presence: true
   validates :introduction, length: { maximum: 200 }, presence: true
 

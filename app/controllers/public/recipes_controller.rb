@@ -15,6 +15,8 @@ class Public::RecipesController < ApplicationController
     if @recipe.save
       redirect_to recipes_path
     else
+      @genres = Genre.all
+      flash.now[:confirm] = "必須事項を全てご記入ください。"
       render 'new'
     end
   end
