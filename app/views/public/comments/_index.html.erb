@@ -8,7 +8,8 @@
             style: "border-radius: 50%; object-fit:cover;" %>
         <%= comment.user.name %>
       </th>
-      <th class="col-md-8"><%= comment.recipe_comment %></th>
+      <th class="col-md-6"><%= comment.recipe_comment %></th>
+      <th class="col-md-2" id="comment_<%= comment.id %>"><%= render "public/comment_favorites/c_favorites", comment: comment, recipe: recipe %></th>
       <% if comment.user == current_user %>
       <th class="col-md-2"><%= link_to "削除", recipe_comment_path(recipe, comment), method: :delete,
           class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"}, remote: true %>
