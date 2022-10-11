@@ -51,7 +51,7 @@ Rails.application.routes.draw do
       end
     end
     resources :genres, only:[:index, :edit, :create, :update, :destroy]
-    resources :recipes, only:[:index,:show, :edit, :update, :destroy] do
+    resources :recipes, only:[:index,:show, :update, :destroy] do
       resources :comments, only:[:destroy]
     end
     resources :contacts, only:[:show, :index, :update]
