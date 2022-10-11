@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :recipes do
       resource :favorites, only:[:create, :destroy]
 
-      resources :comments, only:[:create, :destroy]
+      resources :comments, only:[:create, :destroy] do
+        resource :comment_favorites, only:[:create, :destroy]
+      end
 
       collection do
         get 'search'
@@ -49,7 +51,7 @@ Rails.application.routes.draw do
       end
     end
     resources :genres, only:[:index, :edit, :create, :update, :destroy]
-    resources :recipes, only:[:index,:show, :edit, :update, :destroy] do
+    resources :recipes, only:[:index,:show, :update, :destroy] do
       resources :comments, only:[:destroy]
     end
     resources :contacts, only:[:show, :index, :update]

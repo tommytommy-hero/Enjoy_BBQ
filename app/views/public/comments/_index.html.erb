@@ -6,9 +6,16 @@
       <th class="col-md-2 text-center">
         <%= image_tag comment.user.get_user_image(35, 35),
             style: "border-radius: 50%; object-fit:cover;" %>
-        <%= comment.user.name %>
+        <div><%= comment.user.name %></div>
       </th>
-      <th class="col-md-8"><%= comment.recipe_comment %></th>
+      <th class="col-md-6"><%= comment.recipe_comment %></th>
+      <!--コメントいいね機能-->
+      <% if user_signed_in? %>
+      <th class="col-md-2 count" id="comment_<%= comment.id %>">
+        <%= render "public/comment_favorites/c_favorites", comment: comment, recipe: recipe %>
+      </th>
+      <% end %>
+
       <% if comment.user == current_user %>
       <th class="col-md-2"><%= link_to "削除", recipe_comment_path(recipe, comment), method: :delete,
           class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"}, remote: true %>

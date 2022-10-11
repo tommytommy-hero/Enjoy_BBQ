@@ -2,6 +2,7 @@
   <div class="row-fluid">
     <div class="show_view">
       <h2><%= @recipe.name %></h2>
+      <!--いいね機能-->
       <% if user_signed_in? %>
       <div class="count_show">
         <div id="recipe_<%= @recipe.id %>">

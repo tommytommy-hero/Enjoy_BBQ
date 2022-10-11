@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :contacts, dependent: :destroy
+  has_many :comment_favorites, dependent: :destroy
 
   #フォロー関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
