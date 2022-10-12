@@ -22,6 +22,7 @@ class Recipe < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       recipe_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
+    #byebug
     recipe_image.variant(resize_to_fill: [width, height]).processed
   end
 

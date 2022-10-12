@@ -92,17 +92,17 @@ ActiveRecord::Schema.define(version: 2022_10_11_040753) do
 
   create_table "ingredients", force: :cascade do |t|
     t.integer "recipe_id", null: false
-    t.string "name", null: false
-    t.string "amount", null: false
+    t.string "name"
+    t.string "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
-    t.string "name", null: false
-    t.text "introduction", null: false
+    t.integer "genre_id"
+    t.string "name"
+    t.text "introduction"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2022_10_11_040753) do
 
   create_table "steps", force: :cascade do |t|
     t.integer "recipe_id", null: false
-    t.text "explanation", null: false
+    t.text "explanation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

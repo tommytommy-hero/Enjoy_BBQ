@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 mx-auto">
+      <div class="text-center flash2"><%= flash[:sign] %></div>
       <%= form_with model: @contact, local: true do |f| %>
       <div class="form-group offset-2">
         <div style="font-size: 20px;">お問合せ内容</div>

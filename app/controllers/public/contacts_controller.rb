@@ -15,6 +15,7 @@ class Public::ContactsController < ApplicationController
                         後ほどメールにてご連絡差し上げますので今しばらくお待ちください。"
     else
       @contacts = Contact.all
+      flash.now[:sign] = "ご記入の上、送信してください。"
       render 'index'
     end
   end

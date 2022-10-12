@@ -12,12 +12,18 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    if @recipe.save
+    #byebug
+    if @recipe.status == "draft"
+      @recipe.save!(validate: false)
       redirect_to recipes_path
     else
-      @genres = Genre.all
-      flash.now[:confirm] = "必須事項を全てご記入ください。"
-      render 'new'
+      if @recipe.save
+        redirect_to recipes_path
+      else
+        @genres = Genre.all
+        flash.now[:confirm] = "必須事項を全てご記入ください。"
+        render 'new'
+      end
     end
   end
 
@@ -85,5 +91,4 @@ class Public::RecipesController < ApplicationController
       redirect_to recipes_path
     end
   end
-
 end
