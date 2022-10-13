@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <!--ユーザー紹介-->
+    <div class="col-3">
+      <div class="col-5 mx-auto">
+        <%= image_tag @user.get_user_image(100, 100),
+            style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+      </div>
+        <h4><strong><%= @user.name %></strong></h4>
+        <p><%= @user.introduction %></p>
+      <table class="table table-sm">
+        <tr>
+          <th>投稿数</th>
+          <th><%= @recipes.published.count %></th>
+        </tr>
+      </table>
+      <div>
+      <%= form_with model: @user, url: admin_user_path, local: true, method: :patch do |f| %>
+          <p><strong>会員ステータス</strong></p>
+          <tr>
+            <td class="form-inline">
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :is_active, "true" %><%= f.label :is_active, "有効" %>
+              </div>
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :is_active, "false" %><%= f.label :is_active, "利用停止" %>
+              </div>
+            </td>
+          </tr>
+          <div class="form-btn">
+            <%= f.submit "更新", class: "btn btn-success" %>
+          </div>
+      <% end %>
+      </div>
+    </div>
+        <!--投稿一覧-->
+    <div class="col-9">
+      <div class="row">
+        <div class="col-6">
+          <h4>投稿レシピ一覧　<%= @recipes.count %>件</h4>
+        </div>
+      </div><br>
+        <%= render "admin/recipes/index", recipes: @recipes %>
+    </div>
+
+  </div>
+</div>

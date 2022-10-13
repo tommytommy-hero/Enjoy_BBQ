@@ -1,0 +1,58 @@
+<%= form_with model: recipe, local: true do |f| %>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 mb-4">
+      <!--レシピ-->
+      <div class="form">
+        <div class="form-group">
+          <h4>レシピ名</h4>
+          <%= f.text_field :name, placeholder: "例:きのこのホイル焼き" %>
+        </div>
+        <div class="form-group">
+          <h4>レシピポイント</h4>
+          <%= f.text_area :introduction, cols: "35", placeholder: "例:簡単お手軽！" %>
+        </div>
+        <div class="form-group">
+          <h4>ジャンル</h4>
+          <%= f.collection_select :genre_id, genres, :id, :name, include_blank: "--選択してください--" %>
+        </div><br>
+        <div class="form-group">
+          <%= f.file_field :recipe_image, accept: "image/*" %>
+        </div><br><br><br><br>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <!--材料フォーム-->
+      <div class="form">
+        <h4>材料</h4>
+        <div class="field">
+          <%= f.fields_for :ingredients do |ingredient| %>
+            <%= render "ingredient_fields", f: ingredient %>
+          <% end %>
+        </div>
+        <div class="links">
+          <%= link_to_add_association "材料追加", f, :ingredients, class:"btn btn-primary" %>
+        </div><br>
+      </div><br>
+
+      <!--作り方入力フォーム-->
+      <div class="form">
+        <h4>作り方</h4>
+          <div class="field">
+            <%= f.fields_for :steps do |step| %>
+              <%= render "step_fields", f: step %>
+            <% end %>
+          </div>
+        <div class="links">
+          <%= link_to_add_association "作り方追加", f, :steps, class:"btn btn-primary" %>
+        </div><br>
+        <div class="form-status">
+          <%= f.select :status, Recipe.statuses.keys.map { |k| [t("enums.recipe.status.#{k}"), k]}, {}, {class: "custom-select w-25"} %>
+        </div><br>
+        <div class="form-btn">
+          <%= f.submit '投稿', class:"btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

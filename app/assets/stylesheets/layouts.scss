@@ -1,0 +1,232 @@
+ header {
+   height: 100px;
+   width: 100%;
+   background: #990000;
+ }
+
+ header .container-fluid{
+  padding: 0px;
+ }
+
+ .container{
+  padding: 20px;
+ }
+
+ .container-fluid{
+  padding: 20px;
+ }
+
+ .nav-item a{
+  color: white;
+  font-size: 20px;
+  margin-left: 10px;
+ }
+
+.size {
+  font-size: 2em;
+  color: black;
+}
+
+ main {
+   min-height: 1000px;
+   background: #ffffe0;
+ }
+
+ .danger1{
+  margin-bottom: 6px;
+ }
+ .danger2{
+  margin-bottom: 20px;
+ }
+ .about{
+  display:flex;
+ }
+ .about_message{
+  background: rgba(255,255,224,0.6);
+  top: 60%;
+  right: 20px;
+  position: absolute;
+ }
+ .about_image1{
+  width: 100%;
+  height: 100%;
+ }
+
+ h2{
+  text-align: center;
+ }
+
+ .flash{
+  text-decoration: underline;
+ }
+
+ .flash2{
+  color: red;
+ }
+
+table td {
+  word-break : break-all;
+}
+
+ .image_tag{
+  display:flex;
+ }
+
+ .comment_form{
+  display: flex;
+ }
+
+ .count a{
+  color: black;
+ }
+
+ .count_show {
+  margin-left: 20px;
+  margin-right: 60px;
+  font-size: 30px;
+ }
+ .user_image_index{
+  text-align: right;
+  width: 280px;
+  position: absolute;
+  bottom: 70px;
+
+ }
+ .user_image_show{
+  text-align: right;
+  position: absolute;
+  width: 600px;
+  bottom: 30px;
+ }
+
+ .recipe_name{
+  font-size: 1.2em;
+  font-weight: 900;
+  display:flex;
+  width: 280px;
+  padding: 10px 10px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
+ }
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+ .user_name_link a{
+  color: black;
+  text-decoration: underline;
+ }
+
+ .user_name {
+  font-size: 30px;
+ }
+ .user_name a{
+  color: black;
+  text-decoration: underline;
+ }
+
+ .fav_btn{
+  text-align: right;
+  width: 260px;
+  position: absolute;
+  font-size: 20px;
+ }
+
+ .on{
+  color: red;
+ }
+
+ .off{
+  color: black;
+ }
+
+ .show_view{
+  display:flex;
+ }
+
+ .form {
+  background: white;
+  padding: 10px;
+ }
+
+ .comment{
+  display: flex;
+ }
+ .form-group-area{
+  vertical-align: top;
+ }
+ .form-group-btn{
+  vertical-align: top;
+ }
+
+ .table-recipe {
+  background: white;
+ }
+
+.favorite {
+ font-size: 30px;
+}
+
+ .recipe_flame {
+  background: white;
+ }
+
+ .genre_flame {
+  display:flex;
+ }
+
+ .genre_flame_waku {
+  margin: 15px;
+  font-size: 20px;
+  background: #990000;
+  border-radius: 10px;
+  padding: 2px;
+ }
+ .genre_flame_waku a{
+  color: white;
+ }
+
+.contact_table{
+ font-size: 25px;
+ margin: 10px auto;
+ padding: 20px;
+}
+
+.contact_table_item{
+ padding: 20px;
+}
+
+ .footer {
+   width: 100%;
+   height: 80px;
+   background: #990000;
+ }
+
+ .contact_form{
+  color: white;
+  margin-left: 20px;
+  position: absolute;
+ }
+
+ .contact_form a{
+  color: white;
+  text-decoration: underline;
+ }
+
+footer p{
+ text-align: center;
+ color: white;
+ padding-top: 25px;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.need{
+ color: red;
+}

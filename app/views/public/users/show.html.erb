@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+    <!--ユーザー紹介-->
+    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+      <div class="text-center">
+        <%= image_tag @user.get_user_image(100, 100),
+            style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+      </div>
+        <h4><strong><%= @user.name %></strong></h4>
+        <p><%= @user.introduction %></p>
+      <table class="table table-sm">
+        <tr>
+          <th>投稿数</th>
+          <th><%= @recipes.published.count %></th>
+        </tr>
+        <!--フォロー、いいね-->
+        <tr>
+          <th>フォロー中</th>
+          <th><%= link_to "#{ @user.followings.count}", user_followings_path(@user.id) %></th>
+        </tr>
+        <tr>
+          <th>フォロワー</th>
+          <th><%= link_to "#{ @user.followers.count}", user_followers_path(@user.id) %></th>
+        </tr>
+      </table>
+      <% if @user != current_user %>
+        <div  id="follow-btn_<%= @user.id %>">
+          <%= render "public/relationships/followbtn", user: @user %>
+        </div><br>
+      <% end %>
+      <%= link_to "マイリスト", favorites_user_path(@user), class: "btn btn-outline-info" %>
+
+      <% if @user == current_user and @user.name != "guestuser" %>
+        <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %><br><br>
+      <% end %>
+    </div>
+        <!--投稿一覧-->
+    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
+      <div class="row-fluid">
+      <% if @user == current_user %>
+        <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4>
+        <div>
+          <%= link_to "下書き#{@recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
+          <%= link_to "レシピ作成", new_recipe_path, class: "btn btn-success btn-sm" %>
+        </div>
+      </div><br>
+        <% if @recipes.published.exists? %>
+        <div class="row">
+          <%= render 'public/recipes/index', recipes: @recipes.published %>
+        </div>
+        <% else %>
+          <h1 class="text-center mt-5">まだ投稿はありません。</h1>
+        <% end %>
+      <% else %>
+        <% if @recipes.published.exists? %>
+      <div class="row-fluid">
+        <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4>
+      </div>
+        <% else %>
+          <h1 class="text-center mt-5">まだ投稿はありません。</h1>
+        <% end %>
+      <div class="row">
+        <%= render 'public/recipes/index', recipes: @recipes.published %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

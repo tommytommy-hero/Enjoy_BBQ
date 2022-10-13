@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= form_with model: @user, local: true do |f| %>
+      <div class="form-group offset-2">
+        <%= f.label :アイコン, class: "col-5" %><br>
+        <%= f.file_field :user_image, accept: "image/*" %>
+      </div><br>
+      <div class="form-group offset-2">
+        <%= f.label :ニックネーム, class: "col-5" %><br>
+        <%= f.text_field :name %>
+      </div><br>
+      <div class="form-group offset-2">
+        <%= f.label :紹介文, class: "col-5" %><br>
+        <%= f.text_area :introduction, cols: "50",rows: "4", placeholder: "200文字以内" %>
+      </div><br>
+      <div class="form-btn text-center">
+        <%= f.submit "更新", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

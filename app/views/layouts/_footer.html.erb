@@ -1,0 +1,8 @@
+<footer class="footer">
+  <% if user_signed_in? %>
+  <div class="contact_form">
+    お問い合わせは<%= link_to "こちら", contacts_path %>
+  </div><br>
+  <% end %>
+  <p>© Enjoy_BBQ</p>
+</footer>

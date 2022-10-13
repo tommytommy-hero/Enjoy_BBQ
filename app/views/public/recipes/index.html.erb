@@ -1,0 +1,15 @@
+<div class="container genre_flame">
+  <% @genres.each do |genre| %>
+    <div class="genre_flame_waku">
+      <%= link_to genre.name, recipes_path(genre_id: genre.id) %>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <%= render 'public/recipes/index', recipes: @recipes %>
+  </div>
+</div>
+<div class="row justify-content-center mt-5">
+  <%= paginate @recipes, theme: 'bootstrap-5' %>
+</div>

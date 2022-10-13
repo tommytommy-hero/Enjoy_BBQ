@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <h2>問い合わせ内容</h2>
+      <%= form_with model: @contact, url: admin_contact_path(@contact.id), local: true, class: "form-row" do |f| %>
+      <table class="table">
+        <tr>
+          <td class="col-md-3">名前</td>
+          <td class="col-md-6"><%= @contact.user.name %></td>
+        </tr>
+        <tr>
+          <td>アドレス</td>
+          <td><%= @contact.user.email %></td>
+        </tr>
+        <tr>
+          <td>内容</td>
+          <td><%= @contact.content %></td>
+        </tr>
+        <tr>
+
+          <td>対応</td>
+          <td><%= f.text_area :memo, cols: "60",rows: "8" %></td>
+        </tr>
+        <tr>
+          <td>対応状況</td>
+          <td>
+          　<%= f.select :process_status, Contact.process_statuses_i18n.invert %>
+          　<%= f.submit "更新", class: "btn btn-outline-success btn-sm" %>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+

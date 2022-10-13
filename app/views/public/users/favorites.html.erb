@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>マイリスト一覧<%= @user.favorites.count %>件</h2><br>
+  <div class="row">
+    <%= render "public/recipes/index", recipes: @recipes %>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <%= paginate @recipes, theme: 'bootstrap-5' %>
+  </div>
+</div>
