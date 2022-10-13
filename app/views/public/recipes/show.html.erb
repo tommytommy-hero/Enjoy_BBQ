@@ -12,7 +12,9 @@
       <% end %>
     </div>
   </div>
+  
   <div class="row">
+    <% if @recipe.status == "published" %>
     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-7">
       <div class="image_tag">
         <div class="text-center">
@@ -24,6 +26,8 @@
         </div>
       </div>
     </div>
+    <% end %>
+    
     <!--レシピ紹介、材料-->
     <div class="col-sm-12 col-md-8 col-lg-4 col-xl-5">
       <div class="row-fluid">

@@ -60,10 +60,17 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+    if @recipe.status == "draft"
+      @recipe.update(recipe_params)
+      redirect_to confirm_recipes_path
     else
-      render 'edit'
+      if @recipe.update(recipe_params)
+        redirect_to recipe_path(@recipe)
+      else
+        @genres = Genre.all
+        flash.now[:confirm] = "必須事項を全てご記入ください。"
+        render 'edit'
+      end
     end
   end
 
