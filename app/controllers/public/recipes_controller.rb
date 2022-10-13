@@ -15,10 +15,10 @@ class Public::RecipesController < ApplicationController
     #byebug
     if @recipe.status == "draft"
       @recipe.save!(validate: false)
-      redirect_to recipes_path
+      redirect_to confirm_recipes_path
     else
       if @recipe.save
-        redirect_to recipes_path
+        redirect_to user_path(current_user)
       else
         @genres = Genre.all
         flash.now[:confirm] = "必須事項を全てご記入ください。"
@@ -36,7 +36,6 @@ class Public::RecipesController < ApplicationController
       all_recipes = Recipe.all
     end
     @recipes = all_recipes.published.order(created_at: "DESC").page(params[:page])
-
   end
 
   def show
@@ -60,6 +59,7 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+
     if @recipe.status == "draft"
       @recipe.update(recipe_params)
       redirect_to confirm_recipes_path
