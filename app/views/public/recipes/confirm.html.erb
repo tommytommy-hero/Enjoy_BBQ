@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h1>下書き</h1>
+      <h4>下書きリスト</h4>
       <table class="table">
         <thead>
           <tr>
@@ -20,5 +20,8 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <%= paginate @recipes, theme: 'bootstrap-5' %>
   </div>
 </div>

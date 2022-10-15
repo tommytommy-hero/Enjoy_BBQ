@@ -14,6 +14,7 @@
           <th><%= @recipes.published.count %></th>
         </tr>
       </table>
+
       <div>
       <%= form_with model: @user, url: admin_user_path, local: true, method: :patch do |f| %>
           <p><strong>会員ステータス</strong></p>
@@ -33,7 +34,7 @@
       <% end %>
       </div>
     </div>
-        <!--投稿一覧-->
+    <!--投稿一覧-->
     <div class="col-9">
       <div class="row">
         <div class="col-6">
