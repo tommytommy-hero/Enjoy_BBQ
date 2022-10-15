@@ -1,3 +1,4 @@
+
  header {
    height: 100px;
    width: 100%;
@@ -14,6 +15,10 @@
 
  .container-fluid{
   padding: 20px;
+ }
+
+ .top {
+  padding: 0;
  }
 
  .nav-item a{
@@ -38,19 +43,29 @@
  .danger2{
   margin-bottom: 20px;
  }
- .about{
+ .top{
   display:flex;
  }
- .about_message{
+ .top_message{
   background: rgba(255,255,224,0.6);
-  top: 60%;
+  padding: 10px;
+  top: 30%;
   right: 20px;
   position: absolute;
+  border-radius: 30px;
  }
- .about_image1{
+
+ .top_image1{
   width: 100%;
   height: 100%;
  }
+
+ .top-link{
+  position: absolute;
+  top: 65%;
+  right: 15%;
+ }
+
 
  h2{
   text-align: center;
@@ -229,4 +244,26 @@ footer p{
 
 .need{
  color: red;
+}
+
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+border: none; /*枠線をなくす*/
+color: #696969; /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+background: #93c9ff; /*背景の色を変える*/
+border-radius: 15px; /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+border-radius: 15px; /*角を丸くする*/
+}
+
+.pagination {
+justify-content: center;
 }
