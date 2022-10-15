@@ -41,7 +41,6 @@ Rails.application.routes.draw do
     resources :contacts, only:[:create, :index]
 
     root to: 'homes#top'
-    get 'about' => 'homes#about'
   end
 
   namespace :admin do

@@ -6,7 +6,8 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page]).order(created_at: "DESC")
   end
-
+  
+  #マイリスト一覧ページ
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
@@ -44,6 +45,7 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  #ゲストログイン
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name = "guestuser"

@@ -12,7 +12,8 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    #byebug
+
+    #下書きと投稿で分岐
     if @recipe.status == "draft"
       @recipe.save!(validate: false)
       redirect_to confirm_recipes_path
@@ -29,6 +30,7 @@ class Public::RecipesController < ApplicationController
 
   def index
     @genres = Genre.all
+    #ジャンル毎の一覧表示
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
       all_recipes = @genre.recipes
@@ -43,8 +45,9 @@ class Public::RecipesController < ApplicationController
     @comment = Comment.new
   end
 
+  #下書き一覧ページ
   def confirm
-    @recipes = current_user.recipes.draft.order(created_at: "DESC").page(params[:page])
+    @recipes = current_user.recipes.draft.order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   def edit
@@ -59,7 +62,7 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-
+    #下書きと投稿で分岐
     if @recipe.status == "draft"
       @recipe.update(recipe_params)
       redirect_to confirm_recipes_path
@@ -81,7 +84,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def search
-    @results = @q.result.page(params[:page])
+    @results = @q.result.published.page(params[:page])
   end
 
   private

@@ -1,8 +1,18 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-
-<div class="row">
-  <div>
-  <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, class: "btn btn-secondary btn-sm", method: :post %>
+<div class="top container-fluid">
+  <div class="row">
+    <div class="top">
+      <%= image_tag "about.jpg", class: "top_image1" %>
+      <div class="top_message">
+        <h4>Enjoy!BBQ!とは</h4>
+        <p>こちらのサイトはBBQ特化型のレシピサイトです。<br>
+          BBQにこれからいくけど、何かアクセントが欲しい！<br>
+          BBQでやってきたことをたくさんの人と共有したい！<br>
+          初心者にも上級者にもぜひ楽しんでもらいたいサービスです。
+        </p>
+      </div>
+      <div class="top-link">
+        <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, class: "btn btn-secondary btn-sm", method: :post %>
+      </div>
+    </div>
   </div>
 </div>

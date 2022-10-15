@@ -10,7 +10,8 @@ class Recipe < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, length: { maximum: 200 }, presence: true
-
+  
+  #子モデルであるingredientとstepも保存ができる
   accepts_nested_attributes_for :ingredients, :steps, allow_destroy: true
 
   has_one_attached :recipe_image
@@ -22,7 +23,6 @@ class Recipe < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       recipe_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
-    #byebug
     recipe_image.variant(resize_to_fill: [width, height]).processed
   end
 
