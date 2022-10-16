@@ -1,12 +1,11 @@
-
  header {
-   height: 100px;
    width: 100%;
    background: #990000;
  }
 
  header .container-fluid{
   padding: 0px;
+  font-family: 'Osaka',sans-serif;
  }
 
  .container{
@@ -23,6 +22,7 @@
 
  .nav-item a{
   color: white;
+  text-shadow: 2px 2px 2px black;
   font-size: 20px;
   margin-left: 10px;
  }
@@ -43,29 +43,46 @@
  .danger2{
   margin-bottom: 20px;
  }
- .top{
-  display:flex;
+
+ .top-waku{
+  position: absolute;
+  top: 35%;
+  right: 5%;
  }
+
+ .top-link{
+  display: flex;
+  right: 20%;
+ }
+
+ .top-link-btn{
+  margin-left: 20px;
+ }
+
  .top_message{
   background: rgba(255,255,224,0.6);
   padding: 10px;
-  top: 30%;
-  right: 20px;
-  position: absolute;
+  right: 8%;
   border-radius: 30px;
+  font-family: 'Osaka',sans-serif;
+ }
+ .fa-drumstick-bite{
+  font-size: 60px;
+  color: #8b4513;
  }
 
+  .fa-fish{
+  font-size: 60px;
+  color: #0000cd;
+ }
+  .fa-carrot{
+  font-size: 60px;
+  color: #ea5506;
+ }
  .top_image1{
   width: 100%;
   height: 100%;
  }
-
- .top-link{
-  position: absolute;
-  top: 65%;
-  right: 15%;
- }
-
 
  h2{
   text-align: center;
@@ -82,6 +99,10 @@
 table td {
   word-break : break-all;
 }
+
+ .introduction{
+  word-break: break-all;
+ }
 
  .image_tag{
   display:flex;
@@ -200,9 +221,29 @@ table td {
   background: #990000;
   border-radius: 10px;
   padding: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
  }
  .genre_flame_waku a{
   color: white;
+  font-family: 'Osaka',sans-serif;
+ }
+
+ .title-font{
+  font-family: 'Osaka',sans-serif;
+ }
+
+  .genre_flame_waku_rank{
+  margin: 15px;
+  font-size: 20px;
+  background: #ffd700;
+  border-radius: 10px;
+  padding: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+ }
+
+  .genre_flame_waku_rank a{
+  color :black;
+  font-family: 'Osaka',sans-serif;
  }
 
 .contact_table{
@@ -261,4 +302,31 @@ border-radius: 15px; /*角を丸くする*/
 
 .pagination {
 justify-content: center;
+}
+
+@media screen and (max-width: 720px){
+  .top_message{
+  background: rgba(255,255,224,0.6);
+  padding: 10px;
+  top: 200px;
+  right: 8%;
+
+  border-radius: 30px;
+  font-family: 'Osaka',sans-serif;
+ }
+
+ .top_message_body{
+   font-size: 10px;
+ }
+}
+
+@media screen and (max-width: 540px){
+  .top_message{
+  background: rgba(255,255,224,0.6);
+  padding: 10px;
+ }
+
+ .top_message_body{
+   font-size: 10px;
+ }
 }
