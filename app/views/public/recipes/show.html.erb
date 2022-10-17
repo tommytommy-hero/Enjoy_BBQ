@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row-fluid">
+    <div class="back text-right"><%=link_to '戻る', :back, class:'back-btn' %></div>
     <div class="show_view">
       <h2><%= @recipe.name %></h2>
       <!--いいね機能-->
@@ -12,22 +13,18 @@
       <% end %>
     </div>
   </div>
-  
+
   <div class="row">
     <% if @recipe.status == "published" %>
     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-7">
       <div class="image_tag">
         <div class="text-center">
-          <%= image_tag @recipe.get_recipe_image(600,400) %>
-        </div>
-        <div class="user_image_show">
-          <%= image_tag @recipe.user.get_user_image(70, 70),
-          style: "border-radius: 50%; object-fit:cover;" %>
+          <%= image_tag @recipe.get_recipe_image(600,400), class: "w-100" %>
         </div>
       </div>
-    </div>
+    </div><br><br>
     <% end %>
-    
+
     <!--レシピ紹介、材料-->
     <div class="col-sm-12 col-md-8 col-lg-4 col-xl-5">
       <div class="row-fluid">
