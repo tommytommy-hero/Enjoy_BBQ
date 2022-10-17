@@ -34,9 +34,9 @@ class Public::RecipesController < ApplicationController
     #ジャンル毎の一覧表示
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      all_recipes = @genre.recipes
+      all_recipes = @genre.recipes.includes([:user])
     else
-      all_recipes = Recipe.all
+      all_recipes = Recipe.includes([:user])
     end
     @recipes = all_recipes.published.order(created_at: "DESC").page(params[:page])
   end

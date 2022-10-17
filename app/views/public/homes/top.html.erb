@@ -3,38 +3,19 @@
     <div class="top-image">
       <%= image_tag "about.jpg", class: "top_image1" %>
     </div>
-      <% unless user_signed_in? %>
-      <div class="row">
-      <div class="top-link mx-auto text-center">
-        <div class="top-link-btn">
-          <%= link_to new_user_registration_path, class: "btn btn-meat" do %>
-          <i class="fas fa-drumstick-bite"></i><br>
-          新規登録
-          <% end %>
-        </div>
-        <div class="top-link-btn">
-          <%= link_to new_user_session_path, class: "btn btn-fish" do %>
-          <i class="fas fa-fish"></i><br>
-          ログイン
-          <% end %>
-        </div>
-        <div class="top-link-btn">
-          <%= link_to public_guest_sign_in_path, class: "btn btn-carrot", method: :post do %>
-          <i class="fas fa-carrot"></i><br>
-          ゲスト
-          <% end %>
-        </div>
-      </div>
-      </div>
-      <% end %>
     <div class="top-waku col-sx-12">
       <div class="top_message">
         <p class="top_message_title">Enjoy!BBQ!とは</p>
         <p class="top_message_body">こちらのサイトはBBQ特化型のレシピサイトです。<br>
           BBQにこれからいくけど、何かアクセントが欲しい！<br>
           BBQでやってきたことをたくさんの人と共有したい！<br>
-          初心者にも上級者にもぜひ楽しんでもらいたいサービスです。
+          初心者にも上級者にもぜひ楽しんでもらいたいサービスです。<br><br>
+          <% unless user_signed_in? %>
+          <%= link_to "こちら", public_guest_sign_in_path, method: :post %>
+          から、ゲストログインができます。<br>
+          <% end %>
         </p>
+
       </div><br>
     </div>
   </div>
