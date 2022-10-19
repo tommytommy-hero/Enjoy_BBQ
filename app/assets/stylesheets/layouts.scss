@@ -29,10 +29,6 @@
   text-decoration: underline;
  }
 
- .top {
-  padding: 0;
- }
-
  .nav-item a{
   color: white;
   text-shadow: 2px 2px 2px black;
@@ -49,40 +45,10 @@
    min-height: 1000px;
    background: #ffffe0;
  }
-
- .danger1{
-  margin-bottom: 6px;
- }
+ /*手順削除ボタン*/
  .danger2{
   margin-bottom: 20px;
  }
-
- .top-waku{
-  position: absolute;
-  top: 260px;
-  right: 5%;
- }
-
- .top_message{
-  background: rgba(255,255,224,0.6);
-  padding: 10px;
-  right: 8%;
-  border-radius: 30px;
-  font-family: 'Osaka',sans-serif;
- }
-
- .top_message_title{
-   font-size: 40px;
- }
- .top_message_body{
-   font-size: 25px;
- }
-
- .top_image1{
-  width: 100%;
-  height: 100%;
- }
-
  h2{
   text-align: center;
  }
@@ -95,195 +61,51 @@
   color: red;
  }
 
-table td {
+ table td {
   word-break : break-all;
 }
-
- .introduction{
-  word-break: break-all;
- }
-
- .image_tag{
-  display:flex;
- }
-
- .comment_form{
-  display: flex;
- }
-
+ table th {
+  word-break : break-all;
+}
  .count a{
   color: black;
  }
 
- .count_show {
-  margin-left: 20px;
-  margin-right: 60px;
-  font-size: 30px;
- }
-
- /*
- .user_image_index{
-  text-align: right;
-  width: 280px;
-  position: absolute;
-  bottom: 70px;
- }
- */
-
- .image_index{
-  width: 0;
-  display: block; margin: auto;
- }
-
- .recipe_name{
-  display: block; margin: auto;
-  font-size: 1.2em;
-  font-weight: 900;
-  display:flex;
-  width: 280px;
-  padding: 10px 10px;
-  margin-bottom: 20px;
-  background: white;
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
- }
-
-.no-gutters {
+ .no-gutters {
   margin-right: 0;
   margin-left: 0;
 }
-
- .user_name_link a{
-  color: black;
-  text-decoration: underline;
- }
-
- .user_name {
-  font-size: 30px;
- }
- .user_name a{
-  color: black;
-  text-decoration: underline;
- }
-
- .fav_btn{
-  text-align: right;
-  width: 210px;
-  position: absolute;
-  font-size: 20px;
- }
- .recipe_comment_count{
-  text-align: right;
-  width: 260px;
-  position: absolute;
-  font-size: 20px;
- }
-
- .on{
-  color: #ff69b4;
- }
-
- .off{
-  color: black;
- }
-
- .show_view{
-  display:flex;
- }
-
  .form {
   background: white;
   padding: 10px;
- }
-
- .comment{
-  display: flex;
- }
- .form-group-area{
-  vertical-align: top;
- }
- .form-group-btn{
-  vertical-align: top;
- }
-
- .table-recipe {
-  background: white;
- }
-
-.favorite {
- font-size: 30px;
-}
-
- .recipe_flame {
-  background: white;
- }
-
-
- .genre_flame_waku {
-  margin: 15px;
-  font-size: 20px;
-  background: #990000;
-  border-radius: 10px;
-  padding: 2px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
- }
- .genre_flame_waku a{
-  color: white;
-  font-family: 'Osaka',sans-serif;
  }
 
  .title-font{
   font-family: 'Osaka',sans-serif;
  }
 
-  .genre_flame_waku_rank{
-  margin: 15px;
-  font-size: 20px;
-  background: #ffd700;
-  border-radius: 10px;
-  padding: 2px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
- }
-
-  .genre_flame_waku_rank a{
-  color :black;
-  font-family: 'Osaka',sans-serif;
- }
-
-.contact_table{
- font-size: 25px;
- margin: 10px auto;
- padding: 20px;
+.footer {
+  width: 100%;
+  height: 80px;
+  background: #990000;
 }
-
-.contact_table_item{
- padding: 20px;
+ footer p{
+ text-align: center;
+ color: white;
+ padding-top: 25px;
 }
-
- .footer {
-   width: 100%;
-   height: 80px;
-   background: #990000;
- }
-
- .contact_form{
+ .contact-form{
   color: white;
   margin-left: 20px;
   position: absolute;
  }
 
- .contact_form a{
+ .contact-form a{
   color: white;
   text-decoration: underline;
  }
 
-footer p{
- text-align: center;
- color: white;
- padding-top: 25px;
-}
-
-.field_with_errors {
+ .field_with_errors {
   display: inline;
 }
 
@@ -308,21 +130,15 @@ border-radius: 15px; /*角を丸くする*/
 justify-content: center;
 }
 
-@media screen and (max-width: 540px){
- image_index{
-  margin: auto;
- }
-}
-
 @media screen and (max-width: 720px){
-  .top_message{
+  .top-message{
   background: rgba(255,255,224,0.6);
   padding: 10px;
   border-radius: 30px;
   font-family: 'Osaka',sans-serif;
  }
 
- .top_message_body{
+ .top-message-body{
    font-size: 15px;
  }
 }
@@ -331,7 +147,7 @@ justify-content: center;
  .top-waku{
   position: static
  }
-  .top_message{
+  .top-message{
   background: rgba(255,255,224,0.6);
   padding: 10px;
  }

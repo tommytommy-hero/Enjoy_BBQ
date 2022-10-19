@@ -6,14 +6,14 @@
               style: "border-radius: 20px 20px 0 0;" %>
             <% end %>
         </div>
-        <div class="recipe_name">
+        <div class="recipe-name">
         <%= recipe.name %>
         <% if user_signed_in? %>
-          <div id="recipe_<%= recipe.id %>" class="fav_btn">
+          <div id="recipe_<%= recipe.id %>" class="fav-btn">
             <%= render "public/favorites/favorites", recipe: recipe %>
           </div>
         <% end %>
-          <div class="recipe_comment_count">
+          <div class="recipe-comment-count">
             <i class="far fa-comments"></i>
             <%= recipe.comments.count %>
           </div>
