@@ -1,17 +1,17 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
-      <div class="genre_flame">
-        <div class="genre_flame_waku_rank text-center">
+      <div class="genre-flame">
+        <div class="genre-flame-waku-rank text-center">
           <%= link_to "総合ランキング", rank_recipes_path %>
         </div>
       <% @genres.each do |genre| %>
-        <div class="genre_flame_waku_rank text-center">
+        <div class="genre-flame-waku-rank text-center">
           <%= link_to genre.name, rank_recipes_path(genre_id: genre.id) %>
         </div>
       <% end %>
       </div>
-      <div class="genre_flame_waku text-center">
+      <div class="genre-flame-waku text-center">
         <%= link_to "新着一覧", recipes_path %>
       </div>
     </div>

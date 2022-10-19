@@ -1,3 +1,32 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+ .top {
+  padding: 0;
+ }
+  .top-waku{
+  position: absolute;
+  top: 260px;
+  right: 5%;
+ }
+
+ .top-message{
+  background: rgba(255,255,224,0.6);
+  padding: 10px;
+  right: 8%;
+  border-radius: 30px;
+  font-family: 'Osaka',sans-serif;
+ }
+
+ .top-message-title{
+   font-size: 40px;
+ }
+ .top-message-body{
+   font-size: 25px;
+ }
+
+ .top-image1{
+  width: 100%;
+  height: 100%;
+ }

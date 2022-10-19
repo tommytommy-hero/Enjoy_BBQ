@@ -1,3 +1,97 @@
 // Place all the styles related to the public/recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+ /*
+ .user_image_index{
+  text-align: right;
+  width: 280px;
+  position: absolute;
+  bottom: 70px;
+ }
+ */
+
+ /*showページ*/
+ .image_tag{
+  display:flex;
+ }
+ .user-name {
+  font-size: 30px;
+ }
+ .user-name a{
+  color: black;
+  text-decoration: underline;
+ }
+ .count-show {
+  margin-left: 20px;
+  margin-right: 60px;
+  font-size: 30px;
+ }
+ .show-view{
+  display:flex;
+ }
+
+ .recipe-flame {
+  background: white;
+ }
+ /*材料、手順背景色*/
+ .table-recipe {
+  background: white;
+ }
+ .comment-form{
+  display: flex;
+ }
+
+ /*indexページ*/
+ .recipe-name{
+  display: block; margin: auto;
+  font-size: 1.2em;
+  font-weight: 900;
+  display:flex;
+  width: 280px;
+  padding: 10px 10px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
+ }
+
+ .genre-flame-waku {
+  margin: 15px;
+  font-size: 20px;
+  background: #990000;
+  border-radius: 10px;
+  padding: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+ }
+ .genre-flame-waku a{
+  color: white;
+  font-family: 'Osaka',sans-serif;
+ }
+
+ .genre-flame-waku-rank{
+  margin: 15px;
+  font-size: 20px;
+  background: #ffec47;
+  border-radius: 10px;
+  padding: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+ }
+
+ .genre-flame-waku-rank a{
+  color :black;
+  font-family: 'Osaka',sans-serif;
+ }
+
+ .recipe-comment-count{
+  text-align: right;
+  width: 260px;
+  position: absolute;
+  font-size: 20px;
+ }
+
+ .fav-btn{
+  text-align: right;
+  width: 210px;
+  position: absolute;
+  font-size: 20px;
+ }
