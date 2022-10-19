@@ -64,6 +64,7 @@ gem 'ransack'
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+gem 'whenever', require: false
 
 gem 'dotenv-rails'
 group :production do
