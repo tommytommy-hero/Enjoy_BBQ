@@ -15,3 +15,12 @@ ja:
         previous: '前'
         next: '次'
         truncate: '...'
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "レシピが存在しません"
+          one: "<b>1</b> 件表示"
+          other: "<b>%{count}</b> 件表示"
+      more_pages:
+        display_entries: "<b>%{total}</b> 件中 <b>%{first}&nbsp;~&nbsp;%{last}</b> 件表示"

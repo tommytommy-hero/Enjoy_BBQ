@@ -9,8 +9,9 @@
         <p class="top-message-body">こちらのサイトはBBQ特化型のレシピサイトです。<br>
           BBQにこれからいくけど、何かアクセントが欲しい！<br>
           BBQでやってきたことをたくさんの人と共有したい！<br>
-          初心者にも上級者にもぜひ楽しんでもらいたいサービスです。<br><br>
+          初心者にも上級者にもぜひ楽しんでもらいたいサービスです。
           <% unless user_signed_in? %>
+          <br><br>
           <%= link_to "こちら", public_guest_sign_in_path, method: :post %>
           から、ゲストログインができます。<br>
           <% end %>
