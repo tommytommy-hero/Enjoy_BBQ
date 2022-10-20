@@ -1,20 +1,22 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-
       <% if user_signed_in? %>
         <a class="navbar-brand" href="/">
           <%= image_tag "BBQ.png", size: "80x80" %>
         </a>
         <%= search_form_for @q, url: search_recipes_path do |f| %>
-          <%= f.label :レシピ, style: "color: white;" %>
+          <%= f.label :レシピ検索, style: "color: white;" %><br>
           <%= f.search_field :name_or_introduction_cont %>
-          <%= f.submit '検索' %>
+          <%= f.button :type => "submit", class: "btn btn-outline-light btn-sm" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
         <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -35,9 +37,11 @@
       <% elsif admin_signed_in? %>
         <a class="navbar-brand" href="/admin"><%= image_tag "BBQ.png", size: "80x80" %></a>
           <%= search_form_for @q, url: search_admin_users_path do |f| %>
-            <%= f.label :ユーザー, style: "color: white;" %>
+            <%= f.label :ユーザー検索, style: "color: white;" %><br>
             <%= f.search_field :name_cont %>
-            <%= f.submit '検索' %>
+            <%= f.button :type => "submit", class: "btn btn-outline-light btn-sm" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
           <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,6 +49,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "問い合わせ一覧",admin_root_path %>
+            </li>
             <li class="nav-item">
               <%= link_to "レシピ一覧",admin_recipes_path %>
             </li>

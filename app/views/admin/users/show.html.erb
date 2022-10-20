@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <!--ユーザー紹介-->
-    <div class="col-3">
-      <div class="col-5 mx-auto">
+    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+      <div class="text-center">
         <%= image_tag @user.get_user_image(100, 100),
             style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
       </div>
         <h4><strong><%= @user.name %></strong></h4>
-        <p><%= @user.introduction %></p>
+        <p class="introduction"><%= @user.introduction %></p>
       <table class="table table-sm">
         <tr>
           <th>投稿数</th>
@@ -35,13 +35,13 @@
       </div>
     </div>
     <!--投稿一覧-->
-    <div class="col-9">
+    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
       <div class="row">
-        <div class="col-6">
+        <div class="col-8 mx-auto">
           <h4>投稿レシピ一覧　<%= @recipes.count %>件</h4>
+          <%= render "admin/recipes/index", recipes: @recipes %>
         </div>
-      </div><br>
-        <%= render "admin/recipes/index", recipes: @recipes %>
+      </div>
     </div>
 
   </div>

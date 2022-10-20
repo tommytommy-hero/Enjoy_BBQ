@@ -1,5 +1,5 @@
 <% if recipe.comments.exists? %>
-  <h4>コメント<%= @recipe.comments.count %>件</h4>
+  <h4>コメント<%= @recipe.comments.count %>件<i class="far fa-comment"></i></h4>
   <table class="table">
     <% recipe.comments.each do |comment| %>
     <tr>
@@ -25,6 +25,6 @@
     <% end %>
   </table>
 <% else %>
-  <h4>コメント</h4>
+  <h4>コメント<i class="far fa-comment"></i></h4>
   <p>コメントはまだありません</p>
 <% end %>

@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page]).order(created_at: "DESC")
   end
-  
+
   #マイリスト一覧ページ
   def favorites
     @user = User.find(params[:id])

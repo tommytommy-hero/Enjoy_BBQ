@@ -29,13 +29,14 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
+    @genre = Genre.find_by(params[:genre_id])
     @genres = Genre.all
     #ジャンル毎の一覧表示
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      all_recipes = @genre.recipes
+      all_recipes = @genre.recipes.includes([:user])
     else
-      all_recipes = Recipe.all
+      all_recipes = Recipe.includes([:user])
     end
     @recipes = all_recipes.published.order(created_at: "DESC").page(params[:page])
   end
@@ -48,6 +49,20 @@ class Public::RecipesController < ApplicationController
   #下書き一覧ページ
   def confirm
     @recipes = current_user.recipes.draft.order(created_at: "DESC").page(params[:page]).per(10)
+  end
+
+  #ランキング表示
+  def rank
+    @genre = Genre.find_by(params[:genre_id])
+    @genres = Genre.all
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      all_recipes = @genre.recipes
+    else
+      all_recipes = Recipe.all
+    end
+    @recipes = all_recipes.published.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @recipes = Kaminari.paginate_array(@recipes).page(params[:page]).per(6)
   end
 
   def edit

@@ -1,17 +1,40 @@
-<div class="container genre_flame">
-  <% @genres.each do |genre| %>
-    <div class="genre_flame_waku">
-      <%= link_to genre.name, recipes_path(genre_id: genre.id) %>
-    </div>
-  <% end %>
-</div>
-<div class="container">
+<!--ジャンル一覧リンク表示-->
+<div class="container-fluid">
   <div class="row">
-    <%= render 'public/recipes/index', recipes: @recipes %>
+    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+      <div class="genre-flame">
+        <div class="genre-flame-waku-rank text-center">
+          <%= link_to "総合ランキング", rank_recipes_path %>
+        </div>
+        <div class="genre-flame-waku text-center">
+          <%= link_to "新着一覧", recipes_path %>
+        </div>
+      <% @genres.each do |genre| %>
+        <div class="genre-flame-waku text-center">
+          <%= link_to genre.name, recipes_path(genre_id: genre.id) %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+<!--一覧表示-->
+    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
+      <% if current_page?(recipes_path(genre_id: @genre.id)) %>
+        <h4><i class="fas fa-utensils"></i>
+          「<%= @genre.name %>」の新着レシピ
+        </h4><br>
+      <% else %>
+        <h4><i class="fas fa-utensils"></i>
+          新着一覧
+        </h4><br>
+      <% end %>
+      <div class="row">
+        <%= render 'public/recipes/index', recipes: @recipes %>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <%= paginate @recipes, theme: 'bootstrap-5' %>
+      </div>
+    </div>
   </div>
 </div>
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <%= paginate @recipes, theme: 'bootstrap-5' %>
-  </div>
-</div>
+

@@ -9,6 +9,7 @@
   </thead>
   <tbody>
     <% users.each do |user| %>
+    <% unless user.name == "guestuser" %>
     <tr>
       <td><%= link_to user_path(user.id) do %>
             <%= image_tag user.get_user_image(80, 80),
@@ -23,6 +24,7 @@
         <%= render "public/relationships/followbtn", user: user %>
       </td>
     </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

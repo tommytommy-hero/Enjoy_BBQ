@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-5 mx-auto">
-      <table class="contact_table">
+      <table class="contact-table">
         <tr>
-          <th class="contact_table_item">確認中<%= @contacts.confirming.count %>件
+          <th class="contact-table-item">確認中<%= @contacts.confirming.count %>件
           </th>
-          <th class="contact_table_item">対応済み<%= link_to admin_contacts_path do %>
+          <th class="contact-table-item">対応済み<%= link_to admin_contacts_path do %>
                 <%= @contacts.finished.count %>件
               <% end %>
           </th>

@@ -1,10 +1,12 @@
 class Admin::RecipesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def show
     @recipe = Recipe.find(params[:id])
   end
 
   def index
-    @recipes = Recipe.order(created_at: "DESC").page(params[:page])
+    @recipes = Recipe.includes([:user]).order(created_at: "DESC").page(params[:page])
   end
 
   def search

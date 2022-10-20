@@ -1,18 +1,21 @@
 <div class="top container-fluid">
-  <div class="row">
-    <div class="top">
-      <%= image_tag "about.jpg", class: "top_image1" %>
-      <div class="top_message">
-        <h4>Enjoy!BBQ!とは</h4>
-        <p>こちらのサイトはBBQ特化型のレシピサイトです。<br>
+  <div class="row-fluid">
+    <div class="top-image">
+      <%= image_tag "about.jpg", class: "top-image1" %>
+    </div>
+    <div class="top-waku col-sx-12">
+      <div class="top-message">
+        <p class="top-message-title">Enjoy!BBQ!とは</p>
+        <p class="top-message-body">こちらのサイトはBBQ特化型のレシピサイトです。<br>
           BBQにこれからいくけど、何かアクセントが欲しい！<br>
           BBQでやってきたことをたくさんの人と共有したい！<br>
-          初心者にも上級者にもぜひ楽しんでもらいたいサービスです。
+          初心者にも上級者にもぜひ楽しんでもらいたいサービスです。<br><br>
+          <% unless user_signed_in? %>
+          <%= link_to "こちら", public_guest_sign_in_path, method: :post %>
+          から、ゲストログインができます。<br>
+          <% end %>
         </p>
-      </div>
-      <div class="top-link">
-        <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, class: "btn btn-secondary btn-sm", method: :post %>
-      </div>
+      </div><br>
     </div>
   </div>
 </div>
