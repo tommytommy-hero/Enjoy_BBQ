@@ -1,8 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:update, :edit]
-  before_action :ensure_correct_user, only: [:update, :edit]
-  
+  before_action :ensure_guest_user, only: [:update, :edit]
+
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page]).order(created_at: "DESC")

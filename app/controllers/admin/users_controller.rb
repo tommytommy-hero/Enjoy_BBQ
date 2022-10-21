@@ -8,7 +8,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recipes = @user.recipes.order(created_at: "DESC")
+    @all_recipes = @user.recipes.published
+    @recipes = @user.recipes.order(created_at: "DESC").page(params[:page])
     @results = @q.result
   end
 
@@ -23,7 +24,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def search
-   @results = @q.result
+   @results = @q.result.page(params[:page])
   end
 
   private
