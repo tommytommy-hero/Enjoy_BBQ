@@ -42,7 +42,7 @@
         <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4><br>
         <div>
           <%= link_to "下書き#{@recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
-          <%= link_to "レシピ作成", new_recipe_path, class: "btn btn-success btn-sm" %>
+          <%= link_to "レシピ投稿", new_recipe_path, class: "btn btn-success btn-sm" %>
         </div>
       </div><br><br>
         <% if @recipes.published.exists? %>
