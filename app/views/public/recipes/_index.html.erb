@@ -7,7 +7,7 @@
           <% end %>
       </div>
       <div class="recipe-name">
-      <%= recipe.name %>
+      <%= recipe.name.truncate(10) %>
       <% if user_signed_in? %>
         <div id="recipe_<%= recipe.id %>" class="fav-btn">
           <%= render "public/favorites/favorites", recipe: recipe %>

@@ -1,12 +1,11 @@
 class Admin::RecipesController < ApplicationController
-  before_action :authenticate_admin!
-  
+
   def show
     @recipe = Recipe.find(params[:id])
   end
 
   def index
-    @recipes = Recipe.includes([:user]).order(created_at: "DESC").page(params[:page])
+    @recipes = Recipe.published.includes([:user]).order(created_at: "DESC").page(params[:page])
   end
 
   def search
@@ -16,6 +15,6 @@ class Admin::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
+    redirect_to admin_recipes_path
   end
 end
