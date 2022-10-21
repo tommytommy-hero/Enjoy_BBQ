@@ -8,8 +8,8 @@
         <%= comment.user.name %>
       </th>
       <th><%= comment.recipe_comment %></th>
-      <th><%= link_to "削除", recipe_comment_path(recipe, comment), method: :delete,
-          class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"}, remote: true %>
+      <th><%= link_to "削除", admin_recipe_comment_path(recipe, comment), method: :delete,
+          class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"} %>
       </th>
     </tr>
     <% end %>

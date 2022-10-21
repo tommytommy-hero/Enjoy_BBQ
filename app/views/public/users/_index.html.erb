@@ -20,9 +20,11 @@
       <td><%= user.recipes.published.count %></td>
 
       <!--フォローボタン-->
+      <% unless user == current_user %>
       <td id="follow-btn_<%= user.id %>">
         <%= render "public/relationships/followbtn", user: user %>
       </td>
+      <% end %>
     </tr>
     <% end %>
     <% end %>
