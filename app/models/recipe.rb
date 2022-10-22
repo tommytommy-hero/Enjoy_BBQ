@@ -5,14 +5,14 @@ class Recipe < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   has_many :favorited_users, through: :favorites, source: :user
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, length: { maximum: 30 }, presence: true
   validates :introduction, length: { maximum: 200 }, presence: true
-  
+
   #子モデルであるingredientとstepも保存ができる
   accepts_nested_attributes_for :ingredients, :steps, allow_destroy: true
 
