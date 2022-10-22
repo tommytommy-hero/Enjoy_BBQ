@@ -1,4 +1,4 @@
 class Step < ApplicationRecord
   belongs_to :recipe
-  validates :explanation, presence: true
+  validates :explanation, length: { maximum: 100 }, presence: true
 end

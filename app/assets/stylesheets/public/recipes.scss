@@ -9,6 +9,14 @@
   bottom: 70px;
  }
  */
+ /*入力フォーム*/
+ .form-title{
+  display: flex;
+ }
+ .font-count{
+  margin-top: 5px;
+  color: rgba(79,77,77,0.6);
+ }
 
  /*showページ*/
  .image_tag{
@@ -28,6 +36,10 @@
  }
  .show-view{
   display:flex;
+ }
+ h2{
+  font-weight: 900;
+  font-family: 'Osaka',sans-serif;
  }
 
  .recipe-flame {

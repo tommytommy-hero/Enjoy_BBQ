@@ -3,7 +3,7 @@
     <div class="col-8 mx-auto mt-3">
     <h4>フォロー一覧</h4>
     <% if @users.exists? %>
-      <%= render "public/users/index", users: @users %>
+      <%= render "public/relationships/follow_index", users: @users %>
     <% else %>
       <h4 class="mx-auto">ユーザーはいません</h4>
     <% end %>
