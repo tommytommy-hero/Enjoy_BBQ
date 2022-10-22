@@ -1,5 +1,8 @@
 <div class="container">
   <h2>マイリスト一覧<%= @user.favorites.count %>件</h2><br>
+  <div class="col-12">
+    <%= page_entries_info @recipes %>
+  </div><br>
   <div class="row">
     <%= render "public/recipes/index", recipes: @recipes %>
   </div>

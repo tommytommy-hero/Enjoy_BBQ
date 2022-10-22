@@ -28,10 +28,10 @@
           <%= render "public/relationships/followbtn", user: @user %>
         </div><br>
       <% end %>
-      <%= link_to "マイリスト", favorites_user_path(@user), class: "btn btn-outline-info" %>
+      <%= link_to "マイリスト", favorites_user_path(@user), class: "btn btn-outline-info mt-2" %>
 
       <% if @user == current_user and @user.name != "guestuser" %>
-        <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %><br><br>
+        <%= link_to "編集", edit_user_path(@user), class: "btn btn-success mt-2" %><br><br>
       <% end %>
     </div>
 
@@ -42,7 +42,7 @@
         <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4><br>
         <div>
           <%= link_to "下書き#{@recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
-          <%= link_to "レシピ作成", new_recipe_path, class: "btn btn-success btn-sm" %>
+          <%= link_to "レシピ投稿", new_recipe_path, class: "btn btn-success btn-sm" %>
         </div>
       </div><br><br>
         <% if @recipes.published.exists? %>

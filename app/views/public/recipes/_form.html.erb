@@ -4,12 +4,18 @@
       <!--レシピ-->
       <div class="form">
         <div class="form-group">
-          <h4>レシピ名</h4>
+          <div class="form-title">
+            <h4>レシピ名</h4>
+            <div class="font-count">　※30字以内</div>
+          </div>
           <%= f.text_field :name, placeholder: "例:きのこのホイル焼き" %>
         </div>
         <div class="form-group">
-          <h4>レシピポイント</h4>
-          <%= f.text_area :introduction, cols: "35", placeholder: "例:簡単お手軽！" %>
+          <div class="form-title">
+            <h4>レシピポイント</h4>
+            <div class="font-count">　※200字以内</div>
+          </div>
+          <%= f.text_area :introduction, cols: "40", rows: "3", placeholder: "例:簡単お手軽！" %>
         </div>
         <div class="form-group">
           <h4>ジャンル</h4>
@@ -37,12 +43,15 @@
 
       <!--作り方入力フォーム-->
       <div class="form">
-        <h4>作り方</h4>
-          <div class="field">
-            <%= f.fields_for :steps do |step| %>
-              <%= render "step_fields", f: step %>
-            <% end %>
-          </div>
+        <div class="form-title">
+          <h4>作り方</h4>
+          <div class="font-count">　※100字以内</div>
+        </div>
+        <div class="field">
+          <%= f.fields_for :steps do |step| %>
+            <%= render "step_fields", f: step %>
+          <% end %>
+        </div>
         <div class="links">
           <%= link_to_add_association "作り方追加", f, :steps, class:"btn btn-primary" %>
         </div><br>
