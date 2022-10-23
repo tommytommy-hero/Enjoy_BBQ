@@ -1,46 +1,42 @@
-<div class="container">
-  <div class="row-fluid">
-    <div class="back text-right"><%=link_to '戻る', :back %></div>
-    <div class="show-view">
-      <h2><%= @recipe.name %></h2>
-      <!--いいね機能-->
-      <% if user_signed_in? %>
-      <div class="count-show">
-        <div id="recipe_<%= @recipe.id %>">
-          <%= render "public/favorites/favorites", recipe: @recipe %>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
-
+<div class="container-fluid">
+              <div class="col text-center">
+          <div class="recipe-name-show"><%= @recipe.name %></div>
+        </div><br><br>
   <div class="row">
-    <% if @recipe.status == "published" %>
-    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-7">
-      <div class="image-tag">
-        <div class="text-center">
-          <%= image_tag @recipe.get_recipe_image(600,400), class: "w-100" %>
-        </div>
-      </div>
-    </div><br><br>
-    <% end %>
+    <div class="col-sm-12 col-lg-7">
+      <div class="row">
+        <% if @recipe.status == "published" %>
+        <div class="col-12 mx-auto">
+          <div class="image-tag">
+            <div class="col text-center">
+              <%= image_tag @recipe.get_recipe_image(800,600), class: "image-tag-1" %>
+            </div>
+          </div><br>
 
-    <!--レシピ紹介、材料-->
-    <div class="col-sm-12 col-md-8 col-lg-4 col-xl-5">
-      <div class="row-fluid">
-        <div class="mx-auto">
-          <div class="user-name">by
-            <strong>
-              <%= link_to user_path(@recipe.user.id) do %>
-                <%= @recipe.user.name %>
-              <% end %>
-            </strong>
-          </div>
-          <div class="recipe-flame mt-5">
+          <div class="col-12 count-show">
+            <div class=" btn genre-flame-waku-show">
+              <%= link_to @recipe.genre.name, recipes_path(genre_id: @recipe.genre.id) %>
+            </div>
+            <!--いいね機能-->
+            <% if user_signed_in? %>
+            <div id="recipe_<%= @recipe.id %>" class="col text-right show-fav">
+              <%= render "public/favorites/favorites", recipe: @recipe %>
+            </div>
+            <% end %>
+          </div><br>
+
+          <div class="recipe-flame">
             <%= @recipe.introduction %>
           </div>
+        </div><br><br>
+        <% end %>
+      </div>
+
+        <!--レシピ紹介、材料-->
+      <div class="row">
+        <div class=" col-sm-12 col-md-5">
         　<!--レシピ材料-->
-          <table class="table table-recipe">
+          <table class="table table-sm table-recipe">
             <thead>
               <tr>
                 <th>材料</th>
@@ -57,51 +53,76 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-  </div><br>
-
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-        <!--レシピ手順-->
-      <table class="table table-recipe">
-        <thead>
-          <tr>
-            <th class="col-1"></th>
-            <th>説明</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @recipe.steps.each.with_index(1) do |step, i| %>
-          <tr>
-            <td class="text-center">
-            <div class="step-number"><%= i %></div>
-            </td>
-            <td><%= step.explanation %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <% if @recipe.user == current_user %>
-        <div class="form-btn text-center">
-          <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
-          <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+        <div class="col-sm-12 col-md-7 mt-4">
+            <!--レシピ手順-->
+          <table class="table table-sm table-recipe">
+            <thead>
+              <tr>
+                <th class="col-1"></th>
+                <th>説明</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @recipe.steps.each.with_index(1) do |step, i| %>
+              <tr>
+                <td class="text-center">
+                <div class="step-number"><%= i %></div>
+                </td>
+                <td><%= step.explanation %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <% if @recipe.user == current_user %>
+            <div class="form-btn text-center">
+              <%= link_to "編集", edit_recipe_path, class: "btn btn-success" %>
+              <%= link_to "削除", @recipe, method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  </div><br>
-
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6">
-      <!--コメント機能-->
-      <div class="recipe-index">
-        <%= render "public/comments/index", recipe: @recipe %>
       </div><br>
-      <% if user_signed_in? %>
-      <div class="comment-form">
-        <%= render "public/comments/form" %>
+    </div>
+
+    <div class="col-sm-10 col-lg-5 mx-auto">
+      <div class="row">
+        <div class="col-12">
+          <!--コメント機能-->
+          <div class="recipe-index">
+            <%= render "public/comments/index", recipe: @recipe %>
+          </div><br>
+          <% if user_signed_in? %>
+          <div class="col-12 mx-auto comment-form">
+            <%= render "public/comments/form" %>
+          </div>
+          <% end %>
+        </div>
       </div>
-      <% end %>
+
+      <div class="row">
+        <div class="col-sm-7 col-lg-6 mt-3 recipe-user mx-auto">
+          <div class="recipe-user-show mt-3">
+            <%= link_to user_path(@recipe.user.id) do %>
+              <div class="text-center">
+                <%= image_tag @recipe.user.get_user_image(100, 100),
+                    style: "border-radius: 50%; object-fit:cover;" %>
+              </div>
+            <% end %>
+            <%= link_to user_path(@recipe.user.id) do %>
+              <div class="recipe-user-name text-center"><%= @recipe.user.name %></div>
+            <% end %>
+          </div><br>
+          <div class="user-info">
+            <div class="user-info-count">投稿数　<%= @recipe.user.recipes.published.count %></div>
+             <% if @recipe.user != current_user %>
+               <div  id="follow-btn_<%= @recipe.user.id %>" class=" col text-right">
+                 <%= render "public/relationships/followbtn", user: @recipe.user %>
+               </div>
+             <% end %>
+          </div><br>
+          <p class="recipe-user-introduction"><%= @recipe.user.introduction.truncate(50) %></p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

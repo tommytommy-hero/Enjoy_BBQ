@@ -30,7 +30,7 @@
       <% end %>
       <%= link_to "マイリスト", favorites_user_path(@user), class: "btn btn-outline-info mt-2" %>
 
-      <% if @user == current_user and @user.name != "guestuser" %>
+      <% if @user == current_user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-success mt-2" %><br><br>
       <% end %>
     </div>

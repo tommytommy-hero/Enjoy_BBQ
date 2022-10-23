@@ -1,7 +1,7 @@
 <%= form_with(model: [@recipe, @comment], local: false)  do |f| %>
 <div class="form-group comment">
   <div class="form-group-area">
-   <%= f.text_area :recipe_comment, cols: "40",rows: "1", placeholder: "コメントはこちらに" %>
+   <%= f.text_area :recipe_comment, cols: "30",rows: "1", placeholder: "コメントはこちらに" %>
   </div>
   <div class="form-group-btn">
    <%= f.submit "送信" %>
