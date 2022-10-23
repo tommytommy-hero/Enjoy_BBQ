@@ -19,8 +19,13 @@
  }
 
  /*showページ*/
- .image_tag{
+ .image-tag{
   display:flex;
+ }
+ .image-tag-1{
+  height: auto;
+  width: 100%;
+  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, .5);
  }
  .user-name {
   font-size: 30px;
@@ -30,27 +35,72 @@
   text-decoration: underline;
  }
  .count-show {
-  margin-left: 20px;
-  margin-right: 60px;
-  font-size: 30px;
+  display: flex;
  }
+ .show-fav{
+  font-size: 25px;
+ }
+
+ .recipe-under{
+  display: flex;
+ }
+
  .show-view{
   display:flex;
  }
- h2{
+ .recipe-name-show{
+  font-size: 40px;
   font-weight: 900;
+  font-family: 'Osaka',sans-serif;
+ }
+ .genre-flame-waku-show {
+  font-size: 20px;
+  background: #990000;
+  border-radius: 10px;
+  padding: 11px;
+ }
+ .genre-flame-waku-show a{
+  color: white;
   font-family: 'Osaka',sans-serif;
  }
 
  .recipe-flame {
   background: white;
+  word-break : break-all;
+  font-size: 25px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .5);
+ }
+ .recipe-user{
+  background: white;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .5);
+ }
+ .recipe-user-show{
+  display: block;
+  margin-right: 25px;
+ }
+ .recipe-user-show a{
+  color: black;
  }
  /*材料、手順背景色*/
  .table-recipe {
   background: white;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .5);
  }
  .comment-form{
   display: flex;
+ }
+ .recipe-user-name{
+  text-decoration: underline;
+ }
+ .recipe-user-introduction{
+  font-size: 1.2em;
+  word-break : break-all;
+ }
+ .user-info{
+  display: flex;
+ }
+ .user-info-count{
+  font-size: 1.3em;
  }
 
  /*indexページ*/

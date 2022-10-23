@@ -3,21 +3,22 @@
   <table class="table">
     <% recipe.comments.each do |comment| %>
     <tr>
-      <th class="col-md-2 text-center">
+      <th>
         <%= image_tag comment.user.get_user_image(35, 35),
             style: "border-radius: 50%; object-fit:cover;" %>
         <div><%= comment.user.name %></div>
       </th>
-      <th class="col-md-6"><%= comment.recipe_comment %></th>
+      <th class="col-sm-6 col-lg-7"><%= comment.recipe_comment %></th>
       <!--コメントいいね機能-->
       <% if user_signed_in? %>
-      <th class="col-md-2 count" id="comment_<%= comment.id %>">
+      <th class="count" id="comment_<%= comment.id %>">
         <%= render "public/comment_favorites/c_favorites", comment: comment, recipe: recipe %>
       </th>
       <% end %>
 
       <% if comment.user == current_user %>
-      <th class="col-md-2"><%= link_to "削除", recipe_comment_path(recipe, comment), method: :delete,
+      <th class="col-sm-2 col-lg-2">
+          <%= link_to "削除", recipe_comment_path(recipe, comment), method: :delete,
           class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"}, remote: true %>
       </th>
       <% end %>

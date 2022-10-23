@@ -20,12 +20,21 @@
  .container-fluid{
   padding: 20px;
  }
+ h1{
+  font-family: 'Osaka',sans-serif;
+ }
  h4{
   font-family: 'Osaka',sans-serif;
  }
 
  h5{
   font-family: 'Osaka',sans-serif;
+ }
+
+ .back{
+  margin-right: 20px;
+  font-size: 20px;
+  text-align: right;
  }
 
  .back a{
@@ -155,4 +164,8 @@ justify-content: center;
   background: rgba(255,255,224,0.6);
   padding: 10px;
  }
+ .recipe-name-show{
+  font-size: 20px;
+ }
+
 }
