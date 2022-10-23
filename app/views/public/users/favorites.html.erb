@@ -1,12 +1,27 @@
-<div class="container">
-  <h2>マイリスト一覧<%= @user.favorites.count %>件</h2><br>
-  <div class="col-12">
-    <%= page_entries_info @recipes %>
-  </div><br>
+<div class="container-fluid">
   <div class="row">
-    <%= render "public/recipes/index", recipes: @recipes %>
-  </div>
-  <div class="row justify-content-center mt-5">
-    <%= paginate @recipes, theme: 'bootstrap-5' %>
+    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+      <div class="genre-flame">
+      <% @genres.each do |genre| %>
+        <% if genre.recipes.count != 0 %>
+          <div class="genre-flame-waku text-center">
+            <%= link_to genre.name, favorites_user_path(genre_id: genre.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
+      <h2>マイリスト一覧<%= @user.favorites.count %>件</h2><br>
+      <div class="col-12">
+        <%= page_entries_info @all_recipes %>
+      </div><br>
+      <div class="row">
+        <%= render "public/recipes/index", recipes: @all_recipes %>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <%= paginate @all_recipes, theme: 'bootstrap-5' %>
+      </div>
+    </div>
   </div>
 </div>

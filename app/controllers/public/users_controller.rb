@@ -12,8 +12,16 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
-    @recipes = Recipe.find(favorites)
-    @recipes = Kaminari.paginate_array(@recipes).page(params[:page]).per(9)
+    recipes = Recipe.find(favorites)
+
+    @genres = Genre.all
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      all_recipes = @genre.recipes
+    else
+      all_recipes = recipes
+    end
+    @all_recipes = Kaminari.paginate_array(all_recipes).page(params[:page]).per(9)
   end
 
   def index
@@ -49,7 +57,7 @@ class Public::UsersController < ApplicationController
   #ゲストログイン
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.name = "guestuser"
+    if @user.name == "guestuser"
       redirect_to user_path(current_user)
     end
   end

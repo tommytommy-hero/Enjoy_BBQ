@@ -1,13 +1,13 @@
 <% if comment.comment_favorited_by?(current_user) %>
   <p>
     <%= link_to recipe_comment_comment_favorites_path(recipe, comment), method: :delete, remote: true do %>
-      <i class="fas fa-heart on"></i><%= comment.comment_favorites.count %>
+      <i class="fas fa-thumbs-up comment-on"></i><%= comment.comment_favorites.count %>
     <% end %>
   </p>
 <% else %>
   <p>
     <%= link_to recipe_comment_comment_favorites_path(recipe, comment), method: :post, remote: true do %>
-      <i class="far fa-heart off"></i><%= comment.comment_favorites.count %>
+      <i class="fas fa-thumbs-up comment-off"></i><%= comment.comment_favorites.count %>
     <% end %>
   </p>
 <% end %>
