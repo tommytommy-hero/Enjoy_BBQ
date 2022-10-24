@@ -11,7 +11,7 @@
       <table class="table table-sm">
         <tr>
           <th>投稿数</th>
-          <th><%= @recipes.published.count %></th>
+          <th><%= @all_recipes.published.count %></th>
         </tr>
         <!--フォロー、いいね-->
         <tr>
@@ -39,9 +39,9 @@
     <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
       <div class="row-fluid">
       <% if @user == current_user %>
-        <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4><br>
+        <h4>投稿レシピ一覧　<%= @all_recipes.published.count %>件</h4><br>
         <div>
-          <%= link_to "下書き#{@recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
+          <%= link_to "下書き#{@all_recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
           <%= link_to "レシピ投稿", new_recipe_path, class: "btn btn-success btn-sm" %>
         </div>
       </div><br><br>
@@ -49,6 +49,9 @@
         <div class="row">
           <%= render 'public/recipes/index', recipes: @recipes.published %>
         </div><br>
+        <div class="row justify-content-center mt-5">
+          <%= paginate @recipes, theme: 'bootstrap-5' %>
+        </div>
         <% else %>
           <h1 class="text-center mt-5">まだ投稿はありません。</h1>
         <% end %>
@@ -62,6 +65,9 @@
         <% end %>
       <div class="row">
         <%= render 'public/recipes/index', recipes: @recipes.published %>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <%= paginate @recipes, theme: 'bootstrap-5' %>
       </div>
       <% end %>
     </div>
