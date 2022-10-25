@@ -9,11 +9,7 @@
   <% users.each do |user| %>
   <tr>
     <td class="text-center"><%= link_to admin_user_path(user.id) do %>
-        <div class="admin_user_image">
-          <%= image_tag user.get_user_image(80, 80),
-          style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;" %>
-        </div>
-        <div class="admin_user_name"><%= user.name %></div>
+        <div class="admin-user-name"><%= user.name %></div>
         <% end %>
     </td>
     <td><%= user.email %></td>

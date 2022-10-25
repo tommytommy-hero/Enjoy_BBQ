@@ -12,11 +12,14 @@
         <% recipes.each do |recipe| %>
         <tr>
           <td><%= link_to admin_recipe_path(recipe.id) do %>
-                <%= image_tag recipe.get_recipe_image(100, 100) ,
+                <%= image_tag recipe.get_recipe_image(80, 60) ,
                 style: "border-radius: 20px;" %>
               <% end %>
           </td>
-          <td><%= recipe.name %></td>
+          <td><%= link_to admin_recipe_path(recipe.id) do %>
+                <%= recipe.name %>
+              <% end %>
+          </td>
           <td><%= link_to admin_user_path(recipe.user.id) do %>
                 <%= recipe.user.name %>
               <% end %>

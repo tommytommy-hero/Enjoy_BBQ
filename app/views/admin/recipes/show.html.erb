@@ -1,38 +1,29 @@
-<div class="container">
-  <div class="row-fluid">
-    <div class="back text-right"><%=link_to '戻る', :back %></div>
-    <div class="show-view">
-      <h2><%= @recipe.name %></h2>
-    </div>
-  </div>
-
+<div class="container-fluid">
+  <div class="col text-center">
+    <div class="recipe-name-show"><%= @recipe.name %></div>
+  </div><br><br>
   <div class="row">
-    <% if @recipe.status == "published" %>
-    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-7">
-      <div class="image-tag">
-        <div class="text-center">
-          <%= image_tag @recipe.get_recipe_image(600,400), class: "w-100" %>
-        </div>
-      </div>
-    </div><br><br>
-    <% end %>
-
-    <!--レシピ紹介、材料-->
-    <div class="col-sm-12 col-md-8 col-lg-4 col-xl-5">
-      <div class="row-fluid">
-        <div class="mx-auto">
-          <div class="user-name">by
-            <strong>
-              <%= link_to admin_user_path(@recipe.user.id) do %>
-                <%= @recipe.user.name %>
-              <% end %>
-            </strong>
-          </div>
-          <div class="recipe-flame mt-5">
+    <div class="col-sm-12 col-lg-7">
+      <div class="row">
+        <% if @recipe.status == "published" %>
+        <div class="col-12 mx-auto">
+          <div class="image-tag">
+            <div class="col text-center">
+              <%= image_tag @recipe.get_recipe_image(800,600), class: "image-tag-1" %>
+            </div>
+          </div><br>
+          <div class="recipe-flame">
             <%= @recipe.introduction %>
           </div>
+        </div><br><br>
+        <% end %>
+      </div>
+
+        <!--レシピ紹介、材料-->
+      <div class="row">
+        <div class=" col-sm-12 col-md-5">
         　<!--レシピ材料-->
-          <table class="table table-recipe">
+          <table class="table table-sm table-recipe">
             <thead>
               <tr>
                 <th>材料</th>
@@ -49,42 +40,41 @@
             </tbody>
           </table>
         </div>
-      </div>
+        <div class="col-sm-12 col-md-7 mt-4">
+            <!--レシピ手順-->
+          <table class="table table-sm table-recipe">
+            <thead>
+              <tr>
+                <th class="col-1"></th>
+                <th>説明</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @recipe.steps.each.with_index(1) do |step, i| %>
+              <tr>
+                <td class="text-center">
+                <div class="step-number"><%= i %></div>
+                </td>
+                <td><%= step.explanation %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <div class="form-btn text-center">
+            <%= link_to "削除", admin_recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+          </div>
+        </div>
+      </div><br>
     </div>
-  </div><br>
 
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-        <!--レシピ手順-->
-      <table class="table table-recipe">
-        <thead>
-          <tr>
-            <th class="col-1"></th>
-            <th>説明</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @recipe.steps.each.with_index(1) do |step, i| %>
-          <tr>
-            <td class="text-center">
-            <div class="step-number"><%= i %></div>
-            </td>
-            <td><%= step.explanation %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <div class="form-btn text-center">
-        <%= link_to "削除", admin_recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
-      </div>
-    </div>
-  </div><br>
-
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6">
-      <!--コメント機能-->
-      <div class="recipe-index">
-        <%= render "admin/comments/index", recipe: @recipe %>
+    <div class="col-sm-10 col-lg-5 mx-auto">
+      <div class="row">
+        <div class="col-12">
+          <!--コメント機能-->
+          <div class="recipe-index">
+            <%= render "admin/comments/index", recipe: @recipe %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
