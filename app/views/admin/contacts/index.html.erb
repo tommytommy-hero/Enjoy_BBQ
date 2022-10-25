@@ -4,10 +4,10 @@
       <table class="contact-table">
         <tr>
           <th class="contact-table-item">確認中<%= link_to admin_root_path do %>
-                <%= @contacts.confirming.count %>件
+                <%= @all_contacts.confirming.count %>件
               <% end %>
           </th>
-          <th class="contact-table-item">対応済み<%= @contacts.finished.count %>件</th>
+          <th class="contact-table-item">対応済み<%= @all_contacts.finished.count %>件</th>
         </tr>
       </table>
     </div>
@@ -36,5 +36,8 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <%= paginate @contacts.finished, theme: 'bootstrap-5' %>
   </div>
 </div>

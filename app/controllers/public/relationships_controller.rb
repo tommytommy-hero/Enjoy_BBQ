@@ -12,11 +12,13 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def followings
+    @genres = Genre.all
     user = User.find(params[:user_id])
     @users = user.followings.page(params[:page])
   end
 
   def followers
+    @genres = Genre.all
     user = User.find(params[:user_id])
     @users = user.followers.page(params[:page])
   end

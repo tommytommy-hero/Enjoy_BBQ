@@ -5,8 +5,10 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @genres = Genre.all
-    @ingredients = @recipe.ingredients.build
-    @steps = @recipe.steps.build
+    @recipe.ingredients.build
+    2.times {
+    @recipe.steps.build
+    }
   end
 
   def create
