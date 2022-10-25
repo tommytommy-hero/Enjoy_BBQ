@@ -108,7 +108,9 @@
               </div>
             <% end %>
             <%= link_to user_path(@recipe.user.id) do %>
-              <div class="recipe-user-name text-center"><%= @recipe.user.name %></div>
+              <div class="recipe-user-name text-center">
+                <%= @recipe.user.name %>
+              </div>
             <% end %>
           </div><br>
           <div class="user-info">
@@ -119,7 +121,11 @@
                </div>
              <% end %>
           </div><br>
-          <p class="recipe-user-introduction"><%= @recipe.user.introduction.truncate(50) %></p>
+          <% if @recipe.user.introduction != nil %>
+          <p class="recipe-user-introduction">
+            <%= @recipe.user.introduction.truncate(50) %>
+          </p>
+          <% end %>
         </div>
       </div>
 

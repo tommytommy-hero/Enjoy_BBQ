@@ -104,20 +104,25 @@
  }
 
  /*indexページ*/
+ .recipe-foto{
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+  border-radius: 20px 20px 0 0;
+ }
  .recipe-name{
   display: block; margin: auto;
   font-size: 1.2em;
   font-weight: 900;
   display:flex;
   width: 280px;
+  height: 50px;
   padding: 10px 10px;
   margin-bottom: 20px;
   background: white;
   border-radius: 0 0 20px 20px;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .5);
  }
-
  .genre-flame-waku {
+  width: 50%;
   margin: 15px;
   font-size: 20px;
   background: #990000;
@@ -144,16 +149,32 @@
   font-family: 'Osaka',sans-serif;
  }
 
+ .recipe-name-link{
+  padding: 0px;
+ }
+
+ .recipe-name-link a{
+  color :black;
+ }
+
  .recipe-comment-count{
-  text-align: right;
-  width: 260px;
-  position: absolute;
+  padding: 0px;
   font-size: 20px;
  }
 
  .fav-btn{
-  text-align: right;
-  width: 210px;
-  position: absolute;
+  padding: 0px;
   font-size: 20px;
+ }
+ .recipe-name-form{
+  width: 70%;
+ }
+ .recipe-info-form{
+  width: 100%;
+ }
+ .step-form-1{
+  width: 80%;
+ }
+ .ingredient-form{
+  width: 40%;
  }

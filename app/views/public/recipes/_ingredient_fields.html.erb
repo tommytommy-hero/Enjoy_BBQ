@@ -1,7 +1,7 @@
 <div class="nested-fields" style="margin-bottom:5px;">
   <tr>
-    <td><%= f.text_field :name, placeholder: "例:しめじ" %></td>
-    <td><%= f.text_field :amount, placeholder: "例:１パック" %></td>
+    <td><%= f.text_field :name, placeholder: "例:しめじ", class: "ingredient-form" %></td>
+    <td><%= f.text_field :amount, placeholder: "例:１パック", class: "ingredient-form" %></td>
     <td><%= link_to_remove_association "削除", f, class: "btn btn-outline-danger btn-sm danger" %></td>
   </tr>
 </div>

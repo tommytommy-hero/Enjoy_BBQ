@@ -5,6 +5,7 @@
  .top {
   padding: 0;
  }
+
   .top-waku{
   position: absolute;
   top: 260px;
@@ -30,3 +31,16 @@
   width: 100%;
   height: 100%;
  }
+
+@media screen and (max-width: 750px) {
+ .top-waku{
+  position: static;
+ }
+ .top-message-title{
+   font-size: 30px;
+ }
+
+ .top-message-body{
+   font-size: 15px;
+ }
+}
