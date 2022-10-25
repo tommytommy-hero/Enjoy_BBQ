@@ -5,10 +5,10 @@
       <th>
         <%= image_tag comment.user.get_user_image(35, 35),
             style: "border-radius: 50%; object-fit:cover;" %>
-        <%= comment.user.name %>
+        <div><%= comment.user.name %></div>
       </th>
-      <th><%= comment.recipe_comment %></th>
-      <th><%= link_to "削除", admin_recipe_comment_path(recipe, comment), method: :delete,
+      <th class="col-sm-6 col-lg-7"><%= comment.recipe_comment %></th>
+      <th class="col-sm-2 col-lg-2"><%= link_to "削除", admin_recipe_comment_path(recipe, comment), method: :delete,
           class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"} %>
       </th>
     </tr>

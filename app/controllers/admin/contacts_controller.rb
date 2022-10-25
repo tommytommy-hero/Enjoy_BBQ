@@ -6,7 +6,8 @@ class Admin::ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.all.order(created_at: :desc)
+    @all_contacts = Contact.all
+    @contacts = Contact.order(created_at: :desc).page(params[:page])
   end
 
   def update

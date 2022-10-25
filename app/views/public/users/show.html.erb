@@ -34,9 +34,11 @@
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-success mt-2" %><br><br>
       <% end %>
         <div class="row">
+          <% if @recipes.count != 0 %>
           <div class="col-sm-5 col-md-7 mx-auto genre-flame-waku text-center">
             <%= link_to "投稿一覧", user_path(@user.id) %>
           </div>
+          <% end %>
         </div>
         <div class="row">
           <% @genres.each do |genre| %>
@@ -60,7 +62,7 @@
           「<%= @genre.name %>」
           </h4><br>
         <% else %>
-          <h4 class="text-center">投稿一覧</h4><br>
+          <h4 class="text-center"><i class="fas fa-utensils"></i>投稿一覧</h4><br>
         <% end %>
         <div>
           <%= link_to "下書き#{@all_recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
@@ -87,7 +89,7 @@
           「<%= @genre.name %>」
           </h4><br>
         <% else %>
-          <h4 class="text-center">投稿一覧</h4><br>
+          <h4 class="text-center"><i class="fas fa-utensils"></i>投稿一覧</h4><br>
         <% end %>
       </div><br>
         <% else %>
