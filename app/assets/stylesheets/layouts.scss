@@ -7,6 +7,7 @@
   border: 1px solid red;
  }
 */
+
  header .container-fluid{
   padding: 0px;
   font-family: 'Osaka',sans-serif;
@@ -20,6 +21,9 @@
   padding: 20px;
  }
  h1{
+  font-family: 'Osaka',sans-serif;
+ }
+ h2{
   font-family: 'Osaka',sans-serif;
  }
  h4{
@@ -54,7 +58,7 @@
 }
 
  main {
-   min-height: 1000px;
+   min-height: 500px;
    background: #ffffe0;
  }
  /*手順削除ボタン*/
@@ -140,30 +144,4 @@ border-radius: 15px; /*角を丸くする*/
 
 .pagination {
 justify-content: center;
-}
-
-@media screen and (max-width: 720px){
-  .top-message{
-  background: rgba(255,255,224,0.6);
-  padding: 10px;
-  border-radius: 30px;
-  font-family: 'Osaka',sans-serif;
- }
-
- .top-message-body{
-   font-size: 15px;
- }
-}
-
-@media screen and (max-width: 540px){
- .top-waku{
-  position: static
- }
-  .top-message{
-  background: rgba(255,255,224,0.6);
-  padding: 10px;
- }
- .recipe-name-show{
-  font-size: 20px;
- }
 }

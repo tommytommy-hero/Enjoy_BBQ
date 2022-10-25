@@ -1,18 +1,31 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+    <% if @all_recipes.count == 0 %>
+      <div class="col-10 mt-5 mx-auto text-center">
+        <h1>マイリストはまだありません</h1>
+      </div>
+    <% else %>
+
+    <div class="col-sm-10 col-md-2 col-lg-2 col-xl-2 mx-auto mb-5">
       <div class="genre-flame">
-      <% @genres.each do |genre| %>
-        <% if genre.recipes.count != 0 %>
-          <div class="genre-flame-waku text-center">
-            <%= link_to genre.name, favorites_user_path(genre_id: genre.id) %>
+        <div class="row">
+          <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+            <%= link_to "マイリスト", favorites_user_path(current_user) %>
           </div>
+        </div>
+        <div class="row">
+        <% @genres.each do |genre| %>
+          <% if @recipes.where(genre_id: genre).count != 0 %>
+            <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+              <%= link_to genre.name, favorites_user_path(genre_id: genre.id) %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+        </div>
       </div>
     </div>
-    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
-      <h2>マイリスト一覧<%= @user.favorites.count %>件</h2><br>
+    <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+      <h4 class="text-center"><i class="fas fa-heart mylist"></i>マイリスト</h4><br>
       <div class="col-12">
         <%= page_entries_info @all_recipes %>
       </div><br>
@@ -23,5 +36,6 @@
         <%= paginate @all_recipes, theme: 'bootstrap-5' %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

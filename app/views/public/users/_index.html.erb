@@ -1,32 +1,43 @@
-<table class="table">
+<table class="mx-auto table table-sm">
   <thead>
     <tr>
-      <th></th>
-      <th>ユーザー名</th>
-      <th>投稿数</th>
-      <th></th>
+      <th class="col-2 text-center">ユーザー</th>
+      <th class="col-3">ジャンル別投稿数</th>
+      <th class="col-2"></th>
     </tr>
   </thead>
   <tbody>
     <% users.each do |user| %>
-    <% unless user.name == "guestuser" %>
-    <tr>
-      <td><%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_user_image(80, 80),
-                style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;" %>
+      <% unless user.name == "guestuser" %>
+      <tr>
+        <td class="text-center">
+          <%= link_to user_path(user.id) do %>
+              <div><%= image_tag user.get_user_image(40, 40),
+                  style: "border-radius: 50%; object-fit:cover;" %></div>
+              <div class="user-link"><%= user.name %></div>
           <% end %>
-      </td>
-      <td><%= user.name %></td>
-      <td><%= user.recipes.published.count %></td>
-
-      <!--フォローボタン-->
-      <% unless user == current_user %>
-      <td id="follow-btn_<%= user.id %>">
-        <%= render "public/relationships/followbtn", user: user %>
-      </td>
+        </td>
+        <td class="user-genre">
+          <div class="row">
+          <% @genres.each do |genre| %>
+            <% if user.recipes.where(genre_id: genre).published.count != 0 %>
+              <div class="col-sm-12 col-lg-4 user-recipe-genre text-left">
+                <%= link_to user_path(user.id, genre_id: genre.id) do %>
+                <%= genre.name %>(<%= genre.recipes.where(user_id: user.id).published.count %>)
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+          </div>
+        </td>
+        <!--フォローボタン-->
+        <% unless user == current_user %>
+        <td id="follow-btn_<%= user.id %>">
+          <%= render "public/relationships/followbtn", user: user %>
+        </td>
+        <% end %>
+      </tr>
       <% end %>
-    </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>

@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <%= link_to "レシピ投稿",new_recipe_path %>
+              <%= link_to "マイリスト",favorites_user_path(current_user) %>
             </li>
             <li class="nav-item">
               <%= link_to "マイページ",user_path(current_user) %>

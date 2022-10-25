@@ -11,7 +11,7 @@
       <table class="table table-sm">
         <tr>
           <th>投稿数</th>
-          <th><%= @all_recipes.published.count %></th>
+          <th><%= @all_recipes.count %></th>
         </tr>
         <!--フォロー、いいね-->
         <tr>
@@ -33,41 +33,71 @@
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-success mt-2" %><br><br>
       <% end %>
+        <div class="row">
+          <div class="col-sm-5 col-md-7 mx-auto genre-flame-waku text-center">
+            <%= link_to "投稿一覧", user_path(@user.id) %>
+          </div>
+        </div>
+        <div class="row">
+          <% @genres.each do |genre| %>
+            <% if @recipes.where(genre_id: genre).count != 0 %>
+            <div class="col-sm-5 col-md-7 mx-auto genre-flame-waku text-center">
+              <%= link_to genre.name, user_path(genre_id: genre.id) %>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
     </div>
+
 
     <!--投稿一覧-->
     <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
       <div class="row-fluid">
+      <!--マイページ仕様-->
       <% if @user == current_user %>
-        <h4>投稿レシピ一覧　<%= @all_recipes.published.count %>件</h4><br>
+        <% if current_page?(user_path(genre_id: @genre.id)) %>
+          <h4 class="text-center">
+          「<%= @genre.name %>」
+          </h4><br>
+        <% else %>
+          <h4 class="text-center">投稿一覧</h4><br>
+        <% end %>
         <div>
           <%= link_to "下書き#{@all_recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
           <%= link_to "レシピ投稿", new_recipe_path, class: "btn btn-success btn-sm" %>
         </div>
-      </div><br><br>
+      </div><br>
+
         <% if @recipes.published.exists? %>
         <div class="row">
-          <%= render 'public/recipes/index', recipes: @recipes.published %>
+          <%= render 'public/recipes/index', recipes: @total_recipes %>
         </div><br>
         <div class="row justify-content-center mt-5">
-          <%= paginate @recipes, theme: 'bootstrap-5' %>
+          <%= paginate @total_recipes, theme: 'bootstrap-5' %>
         </div>
         <% else %>
           <h1 class="text-center mt-5">まだ投稿はありません。</h1>
         <% end %>
+      <!--他のユーザーマイページ-->
       <% else %>
-        <% if @recipes.published.exists? %>
+        <% if @total_recipes.exists? %>
       <div class="row-fluid">
-        <h4>投稿レシピ一覧　<%= @recipes.published.count %>件</h4>
+        <% if current_page?(user_path(genre_id: @genre.id)) %>
+          <h4 class="text-center">
+          「<%= @genre.name %>」
+          </h4><br>
+        <% else %>
+          <h4 class="text-center">投稿一覧</h4><br>
+        <% end %>
       </div><br>
         <% else %>
           <h1 class="text-center mt-5">まだ投稿はありません。</h1>
         <% end %>
       <div class="row">
-        <%= render 'public/recipes/index', recipes: @recipes.published %>
+        <%= render 'public/recipes/index', recipes: @total_recipes %>
       </div>
       <div class="row justify-content-center mt-5">
-        <%= paginate @recipes, theme: 'bootstrap-5' %>
+        <%= paginate @total_recipes, theme: 'bootstrap-5' %>
       </div>
       <% end %>
     </div>
