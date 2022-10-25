@@ -3,7 +3,8 @@ class Public::ContactsController < ApplicationController
 
   def index
     @contact = Contact.new
-    @contacts = Contact.includes([:user]).order(created_at: "DESC")
+    @user = current_user
+    @contacts = @user.contacts.includes([:user]).order(created_at: "DESC")
   end
 
   def create

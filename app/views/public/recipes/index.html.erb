@@ -1,37 +1,42 @@
 <!--ジャンル一覧リンク表示-->
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+    <div class="col-sm-10 col-md-2 col-lg-2 col-xl-2 mx-auto mb-5">
       <div class="genre-flame">
-        <div class="genre-flame-waku text-center">
-          <%= link_to "総合ランキング", rank_recipes_path %>
+        <div class="row">
+          <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+            <%= link_to "総合ランキング", rank_recipes_path %>
+          </div>
+          <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+            <%= link_to "新着一覧", recipes_path %>
+          </div>
         </div>
-        <div class="genre-flame-waku text-center">
-          <%= link_to "新着一覧", recipes_path %>
+        <div class="row">
+         <% @genres.each do |genre| %>
+           <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+             <%= link_to genre.name, recipes_path(genre_id: genre.id) %>
+           </div>
+         <% end %>
         </div>
-      <% @genres.each do |genre| %>
-        <div class="genre-flame-waku text-center">
-          <%= link_to genre.name, recipes_path(genre_id: genre.id) %>
-        </div>
-      <% end %>
       </div>
     </div>
 
 <!--一覧表示-->
-    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
+    <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
       <% if current_page?(recipes_path(genre_id: @genre.id)) %>
-        <h4><i class="fas fa-utensils"></i>
+        <h4 class="text-center"><i class="fas fa-utensils"></i>
           「<%= @genre.name %>」の新着レシピ
         </h4><br>
       <% else %>
-        <h4><i class="fas fa-utensils"></i>
+        <h4 class="text-center"><i class="fas fa-utensils"></i>
           新着一覧
         </h4><br>
       <% end %>
+
       <div class="row">
         <div class="col-12">
           <%= page_entries_info @recipes %>
-        </div><br><br>
+        </div><br>
         <%= render 'public/recipes/index', recipes: @recipes %>
       </div>
       <div class="row justify-content-center mt-5">

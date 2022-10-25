@@ -5,27 +5,38 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @all_recipes = @user.recipes
-    @recipes = @user.recipes.page(params[:page]).order(created_at: "DESC")
+    @all_recipes = @user.recipes.published
+    @genre = Genre.find_by(params[:genre_id])
+    @genres = Genre.all
+    @recipes = @user.recipes.published
+    #ジャンル毎の一覧表示
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      all_recipes = @recipes.where(genre_id: params[:genre_id])
+    else
+      all_recipes = @recipes
+    end
+    @total_recipes = all_recipes.order(created_at: "DESC").page(params[:page])
   end
 
   #マイリスト一覧ページ
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
-    recipes = Recipe.find(favorites)
-
+    @recipes = Recipe.where(id: favorites)
     @genres = Genre.all
+
+    @genre = Genre.find_by(params[:genre_id])
     if params[:genre_id]
-      @genre = Genre.find(params[:genre_id])
-      all_recipes = @genre.recipes
+      all_recipes = @recipes.where(genre_id: params[:genre_id])
     else
-      all_recipes = recipes
+      all_recipes = @recipes
     end
     @all_recipes = Kaminari.paginate_array(all_recipes).page(params[:page]).per(9)
   end
 
   def index
+    @genres = Genre.all
     @users = User.where.not(id: current_user.id).page(params[:page])
   end
 

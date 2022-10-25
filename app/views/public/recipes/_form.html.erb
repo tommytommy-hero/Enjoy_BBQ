@@ -8,14 +8,14 @@
             <h4>レシピ名</h4>
             <div class="font-count">　※30字以内</div>
           </div>
-          <%= f.text_field :name, placeholder: "例:きのこのホイル焼き" %>
+          <%= f.text_field :name, placeholder: "例:きのこのホイル焼き", class: "recipe-name-form" %>
         </div>
         <div class="form-group">
           <div class="form-title">
-            <h4>レシピポイント</h4>
+            <h4>レシピ紹介</h4>
             <div class="font-count">　※200字以内</div>
           </div>
-          <%= f.text_area :introduction, cols: "40", rows: "3", placeholder: "例:簡単お手軽！" %>
+          <%= f.text_area :introduction, placeholder: "例:簡単お手軽！材料は○人前です。", class: "recipe-info-form" %>
         </div>
         <div class="form-group">
           <h4>ジャンル</h4>

@@ -2,18 +2,28 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h4>下書きリスト</h4>
-      <table class="table">
+      <h4 class="text-center">下書きリスト<%= @recipes.count %>件</h4>
+      <table class="col-8 mx-auto table">
         <thead>
           <tr>
-            <th>制作日時</th>
-            <th></th>
+            <th class="col-4">レシピ名</th>
+            <th class="col-3">ジャンル名</th>
+            <th class="col-2"></th>
           </tr>
         </thead>
         <tbody>
           <% @recipes.each do |recipe| %>
           <tr>
-            <td><%= recipe.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+            <% if recipe.name == "" %>
+              <td>※未入力</td>
+            <% else %>
+              <td><%= recipe.name %></td>
+            <% end %>
+            <% if recipe.genre == nil %>
+            <td>※未入力</td>
+            <% else %>
+            <td><%= recipe.genre.name %></td>
+            <% end %>
             <td><%= link_to "編集", edit_recipe_path(recipe.id), class: "btn btn-success" %></td>
           </tr>
           <% end %>
