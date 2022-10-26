@@ -1,21 +1,19 @@
 <div class="container-fluid">
   <div class="row">
     <!--ユーザー紹介-->
-    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+    <div class="col-sx-12 col-md-3 col-lg-3 col-xl-3 mx-auto mb-5">
       <div class="text-center">
-        <%= image_tag @user.get_user_image(100, 100),
-            style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+        <%= image_tag @user.get_user_image(100, 100), class: "user-icon"  %>
       </div>
+      <div class="col-10 mx-auto">
         <h4><strong><%= @user.name %></strong></h4>
         <p class="introduction"><%= @user.introduction %></p>
-      <table class="table table-sm">
-        <tr>
-          <th>投稿数</th>
-          <th><%= @all_recipes.count %></th>
-        </tr>
-      </table>
-
-      <div>
+        <table class="table table-sm">
+          <tr>
+            <th>投稿数</th>
+            <th><%= @all_recipes.count %></th>
+          </tr>
+        </table><br>
         <%= form_with model: @user, url: admin_user_path, local: true, method: :patch do |f| %>
         <p><strong>会員ステータス</strong></p>
         <tr>
@@ -27,7 +25,7 @@
               <%= f.radio_button :is_active, "false" %><%= f.label :is_active, "利用停止" %>
             </div>
           </td>
-        </tr>
+        </tr><br><br>
         <div class="form-btn">
           <%= f.submit "更新", class: "btn btn-success" %>
         </div>
@@ -35,7 +33,7 @@
       </div>
     </div>
     <!--投稿一覧-->
-    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
+    <div class="col-sx-12 col-md-9 col-lg-9 col-xl-9">
       <div class="row">
         <div class="col-8 mx-auto">
           <h4>投稿レシピ一覧　<%= @all_recipes.count %>件</h4><br>
@@ -49,6 +47,5 @@
         <%= paginate @recipes, theme: 'bootstrap-5' %>
       </div>
     </div>
-
   </div>
 </div>

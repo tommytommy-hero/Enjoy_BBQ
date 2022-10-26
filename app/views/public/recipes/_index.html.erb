@@ -8,7 +8,7 @@
         <div class="recipe-name">
           <div class="col-8 recipe-name-link text-left">
             <%= link_to recipe_path(recipe.id) do %>
-              <%= recipe.name.truncate(10) %>
+              <%= recipe.name.truncate(6) %>
             <% end %>
           </div>
         <% if user_signed_in? %>
