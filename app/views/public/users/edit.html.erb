@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
+    <div class="col-8 mx-auto">
       <%= form_with model: @user, local: true do |f| %>
       <div class="form-group offset-2">
-        <%= f.label :アイコン, class: "col-5" %><br>
-        <%= f.file_field :user_image, accept: "image/*" %>
+        <%= f.label :アイコン %><br>
+        <%= f.file_field :user_image, accept: "image/*", class: "form-size" %>
       </div><br>
       <div class="form-group offset-2">
-        <%= f.label :ニックネーム, class: "col-5" %><br>
-        <%= f.text_field :name %>
+        <%= f.label :ニックネーム %><br>
+        <%= f.text_field :name, class: "form-size" %>
       </div><br>
       <div class="form-group offset-2">
-        <%= f.label :紹介文, class: "col-5" %><br>
-        <%= f.text_area :introduction, cols: "50",rows: "4", placeholder: "200文字以内" %>
+        <%= f.label :紹介文 %><br>
+        <%= f.text_area :introduction, cols: "50",rows: "4", placeholder: "200文字以内", class: "form-size" %>
       </div><br>
       <div class="form-btn text-center">
         <%= f.submit "更新", class: "btn btn-primary" %>
