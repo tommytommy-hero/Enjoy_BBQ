@@ -76,6 +76,34 @@
           </div>
         </div>
       </div>
+
+
+
+      <div class="row">
+        <div class="col-sm-7 col-lg-6 mt-3 recipe-user mx-auto">
+          <div class="recipe-user-show mt-3">
+            <%= link_to admin_user_path(@recipe.user.id) do %>
+              <div class="text-center">
+                <%= image_tag @recipe.user.get_user_image(100, 100),
+                    style: "border-radius: 50%; object-fit:cover;" %>
+              </div>
+            <% end %>
+            <%= link_to admin_user_path(@recipe.user.id) do %>
+              <div class="recipe-user-name text-center">
+                <%= @recipe.user.name %>
+              </div>
+            <% end %>
+          </div><br>
+          <div class="user-info">
+            <div class="user-info-count">投稿数　<%= @recipe.user.recipes.published.count %></div>
+          </div><br>
+          <% if @recipe.user.introduction != nil %>
+          <p class="recipe-user-introduction">
+            <%= @recipe.user.introduction.truncate(50) %>
+          </p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
