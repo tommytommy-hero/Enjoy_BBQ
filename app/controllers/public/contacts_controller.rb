@@ -15,7 +15,8 @@ class Public::ContactsController < ApplicationController
       flash[:contact] = "お問合せありがとうございます。
                         後ほどメールにてご連絡差し上げますので今しばらくお待ちください。"
     else
-      @contacts = Contact.all
+      @user = current_user
+      @contacts = @user.contacts.includes([:user]).order(created_at: "DESC")
       flash.now[:sign] = "ご記入の上、送信してください。"
       render 'index'
     end

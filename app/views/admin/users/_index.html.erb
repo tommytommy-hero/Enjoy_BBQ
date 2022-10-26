@@ -8,9 +8,10 @@
   </tr>
   <% users.each do |user| %>
   <tr>
-    <td class="text-center"><%= link_to admin_user_path(user.id) do %>
+    <td class="text-center">
+      <%= link_to admin_user_path(user.id) do %>
         <div class="admin-user-name"><%= user.name %></div>
-        <% end %>
+      <% end %>
     </td>
     <td><%= user.email %></td>
     <td><%= user.recipes.published.count %></td>

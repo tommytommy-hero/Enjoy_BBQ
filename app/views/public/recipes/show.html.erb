@@ -19,9 +19,9 @@
             </div>
             <!--いいね機能-->
             <% if user_signed_in? %>
-            <div id="recipe_<%= @recipe.id %>" class="col text-right show-fav">
-              <%= render "public/favorites/favorites", recipe: @recipe %>
-            </div>
+              <div id="recipe_<%= @recipe.id %>" class="col text-right show-fav">
+                <%= render "public/favorites/favorites", recipe: @recipe %>
+              </div>
             <% end %>
           </div><br>
 
@@ -91,9 +91,9 @@
             <%= render "public/comments/index", recipe: @recipe %>
           </div><br>
           <% if user_signed_in? %>
-          <div class="col-12 mx-auto comment-form">
-            <%= render "public/comments/form" %>
-          </div>
+            <div class="col-12 mx-auto comment-form">
+              <%= render "public/comments/form" %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -105,8 +105,7 @@
           <div class="recipe-user-show mt-3">
             <%= link_to user_path(@recipe.user.id) do %>
               <div class="text-center">
-                <%= image_tag @recipe.user.get_user_image(100, 100),
-                    style: "border-radius: 50%; object-fit:cover;" %>
+                <%= image_tag @recipe.user.get_user_image(100, 100), class: "user-icon" %>
               </div>
             <% end %>
             <%= link_to user_path(@recipe.user.id) do %>
@@ -124,9 +123,9 @@
              <% end %>
           </div><br>
           <% if @recipe.user.introduction != nil %>
-          <p class="recipe-user-introduction">
-            <%= @recipe.user.introduction.truncate(50) %>
-          </p>
+            <p class="recipe-user-introduction">
+              <%= @recipe.user.introduction.truncate(50) %>
+            </p>
           <% end %>
         </div>
       </div>
