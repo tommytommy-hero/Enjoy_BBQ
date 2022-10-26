@@ -12,8 +12,7 @@
       <tr>
         <td class="text-center">
           <%= link_to user_path(user.id) do %>
-              <div><%= image_tag user.get_user_image(40, 40),
-                  style: "border-radius: 50%; object-fit:cover;" %></div>
+              <div><%= image_tag user.get_user_image(40, 40), class: "user-icon" %></div>
               <div class="user-link"><%= user.name %></div>
           <% end %>
         </td>

@@ -8,18 +8,21 @@
             <h4>レシピ名</h4>
             <div class="font-count">　※30字以内</div>
           </div>
-          <%= f.text_field :name, placeholder: "例:きのこのホイル焼き", class: "recipe-name-form" %>
+          <%= f.text_field :name, placeholder: "例:きのこのホイル焼き",
+              class: "recipe-name-form" %>
         </div>
         <div class="form-group">
           <div class="form-title">
             <h4>レシピ紹介</h4>
             <div class="font-count">　※200字以内</div>
           </div>
-          <%= f.text_area :introduction, placeholder: "例:簡単お手軽！材料は○人前です。", class: "recipe-info-form" %>
+          <%= f.text_area :introduction, placeholder: "例:簡単お手軽！材料は○人前です。",
+              class: "recipe-info-form" %>
         </div>
         <div class="form-group">
           <h4>ジャンル</h4>
-          <%= f.collection_select :genre_id, genres, :id, :name, include_blank: "--選択してください--" %>
+          <%= f.collection_select :genre_id, genres, :id, :name,
+              include_blank: "--選択してください--" %>
         </div><br>
         <div class="form-group">
           <%= f.file_field :recipe_image, accept: "image/*" %>
@@ -37,7 +40,8 @@
           <% end %>
         </div>
         <div class="links">
-          <%= link_to_add_association "材料追加", f, :ingredients, class:"btn btn-primary" %>
+          <%= link_to_add_association "材料追加", f, :ingredients,
+              class: "btn btn-primary" %>
         </div><br>
       </div><br>
 
@@ -53,7 +57,8 @@
           <% end %>
         </div>
         <div class="links">
-          <%= link_to_add_association "作り方追加", f, :steps, class:"btn btn-primary" %>
+          <%= link_to_add_association "作り方追加", f, :steps,
+              class: "btn btn-primary" %>
         </div><br>
         <div class="form-status">
           <%= f.select :status, Recipe.statuses.keys.map { |k| [t("enums.recipe.status.#{k}"), k]}, {}, {class: "custom-select w-25"} %>
