@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @all_recipes = @user.recipes.published
+    @all_recipes = @user.recipes
     @genre = Genre.find_by(params[:genre_id])
     @genres = Genre.all
     @recipes = @user.recipes.published

@@ -11,7 +11,7 @@
       <table class="table table-sm">
         <tr>
           <th>投稿数</th>
-          <th><%= @all_recipes.count %></th>
+          <th><%= @all_recipes.published.count %></th>
         </tr>
         <!--フォロー、いいね-->
         <tr>
@@ -33,12 +33,12 @@
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-success mt-2" %><br><br>
       <% end %>
+
+      <!--ジャンル別投稿一覧リンク-->
         <div class="row">
-          <% if @recipes.count != 0 %>
           <div class="col-sm-5 col-md-7 mx-auto genre-flame-waku text-center">
             <%= link_to "投稿一覧", user_path(@user.id) %>
           </div>
-          <% end %>
         </div>
         <div class="row">
           <% @genres.each do |genre| %>
