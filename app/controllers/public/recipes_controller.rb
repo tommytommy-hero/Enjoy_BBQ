@@ -82,7 +82,7 @@ class Public::RecipesController < ApplicationController
     #下書きと投稿で分岐
     if @recipe.status == "draft"
       @recipe.update(recipe_params)
-      redirect_to confirm_recipes_path
+      redirect_to recipes_path
     else
       if @recipe.update(recipe_params)
         redirect_to recipe_path(@recipe)
