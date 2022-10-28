@@ -18,8 +18,7 @@
         </div><br><br>
         <% end %>
       </div>
-
-        <!--レシピ紹介、材料-->
+      <!--レシピ紹介、材料-->
       <div class="row">
         <div class=" col-sm-12 col-md-5">
         　<!--レシピ材料-->
@@ -66,7 +65,6 @@
         </div>
       </div><br>
     </div>
-
     <div class="col-sm-10 col-lg-5 mx-auto">
       <div class="row">
         <div class="col-12">
@@ -76,16 +74,13 @@
           </div>
         </div>
       </div>
-
-
-
+      <!--ユーザー情報-->
       <div class="row">
         <div class="col-sm-7 col-lg-6 mt-3 recipe-user mx-auto">
           <div class="recipe-user-show mt-3">
             <%= link_to admin_user_path(@recipe.user.id) do %>
               <div class="text-center">
-                <%= image_tag @recipe.user.get_user_image(100, 100),
-                    style: "border-radius: 50%; object-fit:cover;" %>
+                <%= image_tag @recipe.user.get_user_image(100, 100), class: "user-icon" %>
               </div>
             <% end %>
             <%= link_to admin_user_path(@recipe.user.id) do %>

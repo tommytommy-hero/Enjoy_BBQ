@@ -1,48 +1,58 @@
 <div class="container-fluid">
   <div class="row">
     <!--ユーザー紹介-->
-    <div class="col-sx-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
-      <div class="text-center">
-        <%= image_tag @user.get_user_image(100, 100), class: "user-icon" %>
-      </div>
-        <h4><strong><%= @user.name %></strong></h4>
-        <p class="introduction"><%= @user.introduction %></p>
-      <table class="table table-sm">
-        <tr>
-          <th>投稿数</th>
-          <th><%= @all_recipes.published.count %></th>
-        </tr>
-        <!--フォロー、いいね-->
-        <tr>
-          <th>フォロー中</th>
-          <th><%= link_to "#{ @user.followings.count}", user_followings_path(@user.id) %></th>
-        </tr>
-        <tr>
-          <th>フォロワー</th>
-          <th><%= link_to "#{ @user.followers.count}", user_followers_path(@user.id) %></th>
-        </tr>
-      </table>
-      <% if @user != current_user %>
-        <div  id="follow-btn_<%= @user.id %>">
-          <%= render "public/relationships/followbtn", user: @user %>
-        </div><br>
-      <% end %>
-      <%= link_to "マイリスト", favorites_user_path(@user), class: "btn btn-outline-info mt-2" %>
+    <div class="col-sm-12 col-md-3 col-lg-2 mx-auto mb-5">
+      <div class="col-sm-8 col-md-12 mx-auto">
+        <div class="text-center">
+          <%= image_tag @user.get_user_image(100, 100), class: "user-icon" %>
+        </div>
+          <h4><strong><%= @user.name %></strong></h4>
+          <p class="introduction"><%= @user.introduction %></p>
+        <table class="table table-sm">
+          <tr>
+            <th>投稿数</th>
+            <th><%= @all_recipes.published.count %></th>
+          </tr>
+          <!--フォロー、いいね-->
+          <tr>
+            <th>フォロー中</th>
+            <th><%= link_to "#{ @user.followings.count}", user_followings_path(@user.id) %></th>
+          </tr>
+          <tr>
+            <th>フォロワー</th>
+            <th><%= link_to "#{ @user.followers.count}", user_followers_path(@user.id) %></th>
+          </tr>
+        </table>
+        <div class="text-center">
+        <% if @user != current_user %>
+          <div  id="follow-btn_<%= @user.id %>">
+            <%= render "public/relationships/followbtn", user: @user %>
+          </div><br>
+        <% end %>
 
-      <% if @user == current_user %>
-        <%= link_to "編集", edit_user_path(@user), class: "btn btn-success mt-2" %><br><br>
-      <% end %>
+        <% if @user == current_user && @user.name != "guestuser" %>
+            <%= link_to "編集", edit_user_path(@user), class: "btn btn-success mt-2" %><br><br>
+        <% end %>
+        </div>
+      </div>
 
       <!--ジャンル別投稿一覧リンク-->
+      <div class="row">
+        <div class="col-sm-5 col-md-9 mx-auto text-center mb-3">
+        <%= link_to "マイリスト", favorites_user_path(@user), class: "btn btn-outline-info mylist-flame" %>
+        </div>
+      </div>
         <div class="row">
-          <div class="col-sm-5 col-md-7 mx-auto genre-flame-waku text-center">
+          <% if @recipes.count != 0 %>
+          <div class="col-sm-5 col-md-7 mx-auto genre-flame-item text-center">
             <%= link_to "投稿一覧", user_path(@user.id) %>
           </div>
+          <% end %>
         </div>
         <div class="row">
           <% @genres.each do |genre| %>
             <% if @recipes.where(genre_id: genre).count != 0 %>
-            <div class="col-sm-5 col-md-7 mx-auto genre-flame-waku text-center">
+            <div class="col-sm-5 col-md-7 mx-auto genre-flame-item text-center">
               <%= link_to genre.name, user_path(genre_id: genre.id) %>
             </div>
             <% end %>
@@ -50,26 +60,30 @@
         </div>
     </div>
     <!--投稿一覧-->
-    <div class="col-sx-12 col-md-10 col-lg-10 col-xl-10">
+    <div class="col-sx-12 col-md-9 col-lg-10">
       <div class="row-fluid">
       <!--マイページ仕様-->
       <% if @user == current_user %>
         <% if current_page?(user_path(genre_id: @genre.id)) %>
-          <h4 class="text-center">
+          <h3 class="text-center">
           「<%= @genre.name %>」
-          </h4><br>
+          </h3><br>
         <% else %>
-          <h4 class="text-center"><i class="fas fa-utensils"></i>投稿一覧</h4><br>
+          <h3 class="text-center"><i class="fas fa-utensils"></i>投稿一覧</h3><br>
         <% end %>
         <div>
-          <%= link_to "下書き#{@all_recipes.draft.count}件",confirm_recipes_path, class: "btn btn-outline-primary btn-sm" %>
-          <%= link_to "レシピ投稿", new_recipe_path, class: "btn btn-success btn-sm" %>
+          <%= link_to confirm_recipes_path, class: "btn btn-outline-primary btn-sm" do %>
+            <i class="fas fa-pen"></i>下書き<%= @all_recipes.draft.count %>件
+          <% end %>
+          <%= link_to new_recipe_path, class: "btn btn-success btn-sm recipe-new" do %>
+            <i class="fas fa-pen"></i>レシピ投稿
+          <% end %>
         </div>
       </div><br>
 
         <% if @recipes.published.exists? %>
         <div class="row">
-          <%= render 'public/recipes/index', recipes: @total_recipes %>
+          <%= render 'public/users/recipe_index', recipes: @total_recipes %>
         </div><br>
         <div class="row justify-content-center mt-5">
           <%= paginate @total_recipes, theme: 'bootstrap-5' %>
@@ -82,18 +96,18 @@
         <% if @total_recipes.exists? %>
           <div class="row-fluid">
             <% if current_page?(user_path(genre_id: @genre.id)) %>
-              <h4 class="text-center">
+              <h3 class="text-center">
               「<%= @genre.name %>」
-              </h4><br>
+              </h3><br>
             <% else %>
-              <h4 class="text-center"><i class="fas fa-utensils"></i>投稿一覧</h4><br>
+              <h3 class="text-center"><i class="fas fa-utensils"></i>投稿一覧</h3><br>
             <% end %>
           </div><br>
         <% else %>
           <h1 class="text-center mt-5">まだ投稿はありません。</h1>
         <% end %>
           <div class="row">
-            <%= render 'public/recipes/index', recipes: @total_recipes %>
+            <%= render 'public/users/recipe_index', recipes: @total_recipes %>
           </div>
           <div class="row justify-content-center mt-5">
             <%= paginate @total_recipes, theme: 'bootstrap-5' %>

@@ -10,6 +10,13 @@
   margin-top: 5px;
   color: rgba(79,77,77,0.6);
  }
+ .links{
+  display: flex;
+ }
+ .links-message{
+  margin-top: 5px;
+  margin-bottom: 0px;
+ }
 
  /*showページ*/
  .image-tag{
@@ -33,11 +40,9 @@
  .show-fav{
   font-size: 25px;
  }
-
  .recipe-under{
   display: flex;
  }
-
  .show-view{
   display:flex;
  }
@@ -46,17 +51,16 @@
   font-weight: 900;
   font-family: 'Osaka',sans-serif;
  }
- .genre-flame-waku-show {
+ .genre-flame-item-show {
   font-size: 20px;
   background: #990000;
   border-radius: 10px;
   padding: 11px;
  }
- .genre-flame-waku-show a{
+ .genre-flame-item-show a{
   color: white;
   font-family: 'Osaka',sans-serif;
  }
-
  .recipe-flame {
   background: white;
   word-break : break-all;
@@ -96,7 +100,11 @@
   font-size: 1.3em;
  }
 
+
  /*indexページ*/
+ .index-title{
+  display: flex;
+ }
  .recipe-foto{
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
   border-radius: 20px 20px 0 0;
@@ -114,7 +122,7 @@
   border-radius: 0 0 20px 20px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .5);
  }
- .genre-flame-waku {
+ .genre-flame-item {
   width: 50%;
   margin: 15px;
   font-size: 20px;
@@ -123,22 +131,8 @@
   padding: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
  }
- .genre-flame-waku a{
+ .genre-flame-item a{
   color: white;
-  font-family: 'Osaka',sans-serif;
- }
-
- .genre-flame-waku-rank{
-  margin: 15px;
-  font-size: 20px;
-  background: #ffec47;
-  border-radius: 10px;
-  padding: 2px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
- }
-
- .genre-flame-waku-rank a{
-  color :black;
   font-family: 'Osaka',sans-serif;
  }
 
@@ -171,3 +165,25 @@
  .ingredient-form{
   width: 40%;
  }
+
+ .ranking{
+  font-size: 1.1em;
+ }
+
+ .genre{
+  font-size: 1.3em;
+ }
+
+.recipe-new-none{
+ display: none;
+}
+
+@media screen and (max-width: 767px) {
+ .recipe-new{
+  display: none;
+ }
+.recipe-new-none{
+ display: block;
+ border-radius: 50%;
+}
+}

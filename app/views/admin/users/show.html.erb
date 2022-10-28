@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <!--ユーザー紹介-->
-    <div class="col-sx-12 col-md-3 col-lg-3 col-xl-3 mx-auto mb-5">
+    <div class="col-sm-12 col-md-4 col-xl-3 mx-auto mb-5">
       <div class="text-center">
         <%= image_tag @user.get_user_image(100, 100), class: "user-icon"  %>
       </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <!--投稿一覧-->
-    <div class="col-sx-12 col-md-9 col-lg-9 col-xl-9">
+    <div class="col-sm-12 col-md-8 col-xl-9">
       <div class="row">
         <div class="col-8 mx-auto">
           <h4>投稿レシピ一覧　<%= @all_recipes.count %>件</h4><br>

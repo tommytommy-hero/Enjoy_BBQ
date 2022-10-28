@@ -6,29 +6,42 @@
     </div>
   <% else %>
     <!--ジャンルリンク表示-->
-    <div class="col-sm-10 col-md-2 col-lg-2 col-xl-2 mx-auto mb-5">
+    <div class="col-sm-10 col-md-2 mx-auto mb-5">
       <div class="genre-flame">
         <div class="row">
-          <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+          <div class="col-12 mx-auto text-center mb-3 recipe-new">
+            <%= link_to new_recipe_path, class: "btn btn-success recipe-new" do %>
+              <i class="fas fa-pen"></i>レシピ投稿
+            <% end %>
+          </div>
+          <div class="col-sm-5 col-md-10 mx-auto genre-flame-item text-center">
             <%= link_to "マイリスト", favorites_user_path(current_user) %>
           </div>
-        </div>
+        </div><br>
         <div class="row">
-        <% @genres.each do |genre| %>
-          <% if @recipes.where(genre_id: genre).count != 0 %>
-            <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
-              <%= link_to genre.name, favorites_user_path(genre_id: genre.id) %>
-            </div>
+          <div class="col-sm-12 text-center genre">
+            <strong>ジャンル毎</strong>
+          </div>
+          <% @genres.each do |genre| %>
+            <% if @recipes.where(genre_id: genre).count != 0 %>
+              <div class="col-sm-5 col-md-10 mx-auto genre-flame-item text-center">
+                <%= link_to genre.name, favorites_user_path(genre_id: genre.id) %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
         </div>
       </div>
     </div>
     <!--マイリスト一覧-->
-    <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
-      <h4 class="text-center">
-        <i class="fas fa-heart mylist"></i>マイリスト
-      </h4><br>
+    <div class="col-sm-12 col-md-10">
+      <div class="col-12 index-title text-center">
+        <h3 class="mx-auto">
+          <i class="fas fa-heart mylist"></i>マイリスト
+        </h3>
+        <%= link_to new_recipe_path, class: "btn btn-outline-success recipe-new-none" do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      </div>
       <div class="col-12">
         <%= page_entries_info @all_recipes %>
       </div><br>
