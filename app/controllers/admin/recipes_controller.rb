@@ -5,7 +5,7 @@ class Admin::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.published.includes([:user]).order(created_at: "DESC").page(params[:page])
+    @recipes = Recipe.published.includes([:user]).order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   def search

@@ -3,28 +3,27 @@ class Admin::UsersController < ApplicationController
   before_action :set_q, only: [:index, :search, :show]
 
   def index
-    @users = User.order(created_at: "DESC").page(params[:page])
+    @users = User.order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
     @all_recipes = @user.recipes.published
-    @recipes = @user.recipes.order(created_at: "DESC").page(params[:page])
+    @recipes = @user.recipes.order(created_at: "DESC").page(params[:page]).per(10)
     @results = @q.result
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to request.referer
-      flash[:notice] = "内容を変更しました。"
+      redirect_to admin_users_path
     else
       render 'index'
     end
   end
 
   def search
-   @results = @q.result.page(params[:page])
+   @results = @q.result.page(params[:page]).per(10)
   end
 
   private

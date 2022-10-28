@@ -3,11 +3,13 @@
     <div class="col-5 mx-auto">
       <table class="contact-table">
         <tr>
-          <th class="contact-table-item">確認中<%= @all_contacts.confirming.count %>件
+          <th class="contact-table-item">確認中
+            <%= @all_contacts.confirming.count %>件
           </th>
-          <th class="contact-table-item">対応済み<%= link_to admin_contacts_path do %>
-                <%= @all_contacts.finished.count %>件
-              <% end %>
+          <th class="contact-table-item">対応済み
+            <%= link_to admin_contacts_path do %>
+              <%= @all_contacts.finished.count %>件
+            <% end %>
           </th>
         </tr>
       </table>

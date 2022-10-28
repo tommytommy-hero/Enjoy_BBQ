@@ -81,11 +81,20 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     #下書きと投稿で分岐
     if @recipe.status == "draft"
-      @recipe.update(recipe_params)
-      redirect_to recipes_path
+      if @recipe.update(recipe_params)
+        if @recipe.status == "published"
+          redirect_to recipe_path(@recipe)
+        else
+          redirect_to confirm_recipes_path
+        end
+      end
     else
       if @recipe.update(recipe_params)
-        redirect_to recipe_path(@recipe)
+        if @recipe.status == "published"
+          redirect_to recipe_path(@recipe)
+        else
+          redirect_to confirm_recipes_path
+        end
       else
         @genres = Genre.all
         flash.now[:confirm] = "必須事項を全てご記入ください。"

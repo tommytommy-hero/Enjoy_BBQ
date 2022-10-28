@@ -2,11 +2,6 @@
    width: 100%;
    background: #990000;
  }
-/*
- *{
-  border: 1px solid red;
- }
-*/
 
  header .container-fluid{
   padding: 0px;
@@ -26,10 +21,12 @@
  h2{
   font-family: 'Osaka',sans-serif;
  }
+ h3{
+  font-family: 'Osaka',sans-serif;
+ }
  h4{
   font-family: 'Osaka',sans-serif;
  }
-
  h5{
   font-family: 'Osaka',sans-serif;
  }
@@ -57,21 +54,18 @@
  .form-size-2{
   width: 100%;
  }
-.size {
+ .size {
   font-size: 2em;
   color: black;
-}
+ }
 
  main {
    min-height: 500px;
    background: #ffffe0;
  }
  /*手順削除ボタン*/
- .danger2{
+ .danger{
   margin-bottom: 20px;
- }
- h2{
-  text-align: center;
  }
 
  .flash{
@@ -84,10 +78,10 @@
 
  table td {
   word-break : break-all;
-}
+ }
  table th {
   word-break : break-all;
-}
+ }
  .count a{
   color: black;
  }
@@ -95,7 +89,7 @@
  .no-gutters {
   margin-right: 0;
   margin-left: 0;
-}
+ }
  .form {
   background: white;
   padding: 10px;
@@ -108,16 +102,16 @@
   border-radius: 50%;
   object-fit: cover;
  }
-.footer {
+ .footer {
   width: 100%;
   height: 80px;
   background: #990000;
-}
+ }
  footer p{
  text-align: center;
  color: white;
  padding-top: 25px;
-}
+ }
  .contact-form{
   color: white;
   margin-left: 20px;
@@ -131,7 +125,7 @@
 
  .field_with_errors {
   display: inline;
-}
+ }
 
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
