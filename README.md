@@ -34,10 +34,23 @@ BBQ初心者、上級者、BBQに興味のある方皆さんがさらに楽し�
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ## gem一覧
+#### デバック
+* gem 'pry-byebug'
+* gem 'pry-doc'
+* gem 'pry-rails'
+#### ログイン機能
 * gem 'devise'
-* gem 'enum_help'
-* gem 'kaminari'
-* gem 'bootstrap5-kaminari-views', '~> 0.0.1'
-* gem 'ransack'
-* gem 'cocoon'
+#### レイアウト
 * gem 'image_processing', '~> 1.2'
+* gem 'bootstrap5-kaminari-views', '~> 0.0.1'
+#### 動的フォーム実装機能
+* gem 'cocoon'
+#### ページネーション
+* gem 'kaminari','~> 1.2.1'
+#### 検索機能
+* gem 'ransack'
+#### デプロイ
+* gem 'mysql2'
+#### その他
+* gem 'enum_help'
+* gem "rails-i18n"
