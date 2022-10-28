@@ -12,8 +12,13 @@ class Admin::ContactsController < ApplicationController
 
   def update
     @contact = Contact.find(params[:id])
-    @contact.update(contact_params)
-    redirect_to admin_root_path
+    if @contact.update(contact_params)
+      if @contact.process_status == "confirming"
+        redirect_to admin_root_path
+      else
+        redirect_to admin_contacts_path
+      end
+    end
   end
 
   private

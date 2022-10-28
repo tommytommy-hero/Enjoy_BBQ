@@ -42,6 +42,7 @@
         <div class="links">
           <%= link_to_add_association "材料追加", f, :ingredients,
               class: "btn btn-primary" %>
+          <p class="links-message">※不要な入力フォームは削除してください。</p>
         </div><br>
       </div><br>
 
@@ -59,6 +60,7 @@
         <div class="links">
           <%= link_to_add_association "作り方追加", f, :steps,
               class: "btn btn-primary" %>
+          <p class="links-message">※不要な入力フォームは削除してください。</p>
         </div><br>
         <div class="form-status">
           <%= f.select :status, Recipe.statuses.keys.map { |k| [t("enums.recipe.status.#{k}"), k]}, {}, {class: "custom-select w-25"} %>

@@ -1,39 +1,56 @@
 <!--ジャンル一覧リンク表示-->
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-10 col-md-2 col-lg-2 col-xl-2 mx-auto">
+    <div class="col-sm-10 col-md-2 mx-auto mb-5">
       <div class="genre-flame">
         <div class="row">
-          <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+          <div class="col-12 mx-auto text-center mb-3 recipe-new">
+            <%= link_to new_recipe_path, class: "btn btn-success recipe-new" do %>
+              <i class="fas fa-pen"></i>レシピ投稿
+            <% end %>
+          </div>
+          <div class="col-sm-5 col-md-10 mx-auto genre-flame-item text-center">
             <%= link_to "総合ランキング", rank_recipes_path %>
           </div>
-          <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+          <div class="col-sm-5 col-md-10 mx-auto genre-flame-item text-center">
             <%= link_to "新着一覧", recipes_path %>
           </div>
-        </div>
+        </div><br>
         <div class="row">
+          <div class="col-sm-12 text-center ranking">
+            <strong>ジャンル毎ランキング</strong>
+          </div>
           <% @genres.each do |genre| %>
-          <div class="col-sm-5 col-md-10 mx-auto genre-flame-waku text-center">
+          <div class="col-sm-5 col-md-10 mx-auto genre-flame-item text-center">
             <%= link_to rank_recipes_path(genre_id: genre.id) do %>
-              <%= genre.name %>ランキング
+              <%= genre.name %>
             <% end %>
           </div>
           <% end %>
         </div>
       </div>
     </div>
-
     <!--一覧表示-->
-    <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+    <div class="col-sm-12 col-md-10">
       <% if current_page?(rank_recipes_path(genre_id: @genre.id)) %>
-        <h4 class="text-center">
+      <div class="col-12 index-title text-center">
+        <h3 class="mx-auto">
           <i class="fas fa-utensils"></i>
           <%= @genre.name %>ランキング
-        </h4><br>
+        </h3>
+        <%= link_to new_recipe_path, class: "btn btn-outline-success recipe-new-none" do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      </div>
       <% else %>
-        <h4 class="text-center"><i class="fas fa-utensils"></i>
+      <div class="col-12 index-title text-center">
+        <h3 class="mx-auto"><i class="fas fa-utensils"></i>
           総合ランキング
-        </h4><br>
+        </h3>
+        <%= link_to new_recipe_path, class: "btn btn-outline-success recipe-new-none" do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      </div>
       <% end %>
 
       <div class="row">

@@ -14,17 +14,21 @@
         <tbody>
           <% @recipes.each do |recipe| %>
           <tr>
+            <!--タイトル分岐-->
             <% if recipe.name == "" %>
               <td>※未入力</td>
             <% else %>
               <td><%= recipe.name %></td>
             <% end %>
+            <!--ジャンル-->
             <% if recipe.genre == nil %>
             <td>※未入力</td>
             <% else %>
             <td><%= recipe.genre.name %></td>
             <% end %>
-            <td><%= link_to "編集", edit_recipe_path(recipe.id), class: "btn btn-success" %></td>
+            <td><%= link_to "編集", edit_recipe_path(recipe.id), class: "btn btn-success btn-sm" %></td>
+            <td><%= link_to "削除", recipe_path(recipe.id), method: :delete,
+                 class: "btn btn-danger btn-sm", data: {confirm: "本当に削除しますか？"} %></td>
           </tr>
           <% end %>
         </tbody>

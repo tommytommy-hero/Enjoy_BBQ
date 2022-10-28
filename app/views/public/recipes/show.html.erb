@@ -14,7 +14,7 @@
           </div><br>
 
           <div class="col-12 count-show">
-            <div class=" btn genre-flame-waku-show">
+            <div class=" btn genre-flame-item-show">
               <%= link_to @recipe.genre.name, recipes_path(genre_id: @recipe.genre.id) %>
             </div>
             <!--いいね機能-->
@@ -94,6 +94,7 @@
             <div class="col-12 mx-auto comment-form">
               <%= render "public/comments/form" %>
             </div>
+            <p class="ml-3">※未記入の場合、送信できません。</p>
           <% end %>
         </div>
       </div>
@@ -130,7 +131,6 @@
         </div>
       </div>
       <% end %>
-
     </div>
   </div>
 </div>

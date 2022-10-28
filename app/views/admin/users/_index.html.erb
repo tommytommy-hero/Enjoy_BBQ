@@ -10,17 +10,18 @@
   <tr>
     <td class="text-center">
       <%= link_to admin_user_path(user.id) do %>
-        <div class="admin-user-name"><%= user.name %></div>
+        <div class="admin-user-name"><%= user.name.truncate(10) %></div>
       <% end %>
     </td>
     <td><%= user.email %></td>
     <td><%= user.recipes.published.count %></td>
     <td><%= user.created_at.strftime("%Y年%m月%d日") %></td>
-    <td><% if user.is_active == true %>
-          <p class="text-succsess font-weight-bold">有効</p>
-        <% else %>
-          <p class="text-secondary font-weight-bold">利用停止</p>
-        <% end %>
+    <td>
+      <% if user.is_active == true %>
+        <p class="text-succsess font-weight-bold">有効</p>
+      <% else %>
+        <p class="text-secondary font-weight-bold">利用停止</p>
+      <% end %>
     </td>
   </tr>
   <% end %>
