@@ -4,7 +4,7 @@
     <div class="col-sm-12 col-md-3 col-lg-2 mx-auto mb-5">
       <div class="col-sm-8 col-md-12 mx-auto">
         <div class="text-center">
-          <%= image_tag @user.get_user_image(100, 100), class: "user-icon" %>
+          <%= image_tag @user.get_user_image, size: '100x100', class: "user-icon" %>
         </div>
           <h4><strong><%= @user.name %></strong></h4>
           <p class="introduction"><%= @user.introduction %></p>

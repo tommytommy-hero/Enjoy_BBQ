@@ -3,7 +3,7 @@
     <!--ユーザー紹介-->
     <div class="col-sm-12 col-md-4 col-xl-3 mx-auto mb-5">
       <div class="text-center">
-        <%= image_tag @user.get_user_image(100, 100), class: "user-icon"  %>
+        <%= image_tag @user.get_user_image, size: '100x100', class: "user-icon"  %>
       </div>
       <div class="col-10 mx-auto">
         <h4><strong><%= @user.name %></strong></h4>
