@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
 
   belongs_to :user
-  belongs_to :genre, optional: true
+  belongs_to :genre
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
