@@ -22,6 +22,12 @@ BBQ初心者、上級者、BBQに興味のある方皆さんがさらに楽し�
 * BBQでやってみたいことを探したい。
 * BBQでやってきたことをアウトプットも兼ねて発信したい。
 
+## サイトイメージ
+![Enjoy!BBQ!](https://user-images.githubusercontent.com/109708488/198795023-1a5d8ac0-88a0-427d-b2a9-9c2bbcd2bae8.gif)
+
+## レスポンシブ対応
+![レスポンシブ 001](https://user-images.githubusercontent.com/109708488/198799180-1d745bb2-fea1-4c9f-8206-b14a6d290f2f.jpeg)
+
 ## 設計書
 * [Enjoy_BBQ!ER図 drawio](https://user-images.githubusercontent.com/109708488/196321353-211c2fdf-c651-4639-a935-0955cc95bc6d.png)
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1ufuXAlIx3xl8uH_KpReC5UO0zKuAB3Oqp9wF9wfACEo/edit?usp=sharing)
