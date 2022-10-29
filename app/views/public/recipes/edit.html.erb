@@ -1,4 +1,7 @@
 <div class="container">
   <div class="text-center flash"><%= flash[:confirm] %></div>
+  <% if @recipe.status == "draft" %>
+  <div class="text-center">下書きを再度下書きしておきたい場合、一旦全ての入力が必要です。</div>
+  <% end %>
   <%= render "form", recipe: @recipe, genres: @genres %>
 </div>
