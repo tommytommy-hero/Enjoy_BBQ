@@ -4,7 +4,7 @@
     <% recipe.comments.each do |comment| %>
     <tr>
       <th>
-        <%= image_tag comment.user.get_user_image(35, 35), class: "user-icon" %>
+        <%= image_tag comment.user.get_user_image, size: '35x35', class: "user-icon" %>
         <div><%= comment.user.name %></div>
       </th>
       <th class="col-sm-6 col-lg-7"><%= comment.recipe_comment %></th>

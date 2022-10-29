@@ -13,7 +13,7 @@
     <tr>
       <td>
         <%= link_to admin_recipe_path(recipe.id) do %>
-          <%= image_tag recipe.get_recipe_image(40, 30) ,
+          <%= image_tag recipe.get_recipe_image, size: '40x30',
           style: "border-radius: 20px;" %>
         <% end %>
       </td>
