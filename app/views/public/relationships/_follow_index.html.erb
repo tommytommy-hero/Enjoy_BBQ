@@ -12,7 +12,7 @@
       <tr>
         <td class="text-center">
           <%= link_to user_path(user.id) do %>
-              <div><%= image_tag user.get_user_image(40, 40), class: "user-icon" %></div>
+              <div><%= image_tag user.get_user_image, size: '40x40', class: "user-icon" %></div>
               <div class="user-link"><%= user.name %></div>
           <% end %>
         </td>

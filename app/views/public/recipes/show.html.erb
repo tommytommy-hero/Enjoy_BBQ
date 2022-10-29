@@ -9,7 +9,7 @@
         <div class="col-12 mx-auto">
           <div class="image-tag">
             <div class="col text-center">
-              <%= image_tag @recipe.get_recipe_image(800,600), class: "image-tag-1" %>
+              <%= image_tag @recipe.get_recipe_image, size: '600x800', class: "image-tag-1" %>
             </div>
           </div><br>
 
@@ -106,7 +106,7 @@
           <div class="recipe-user-show mt-3">
             <%= link_to user_path(@recipe.user.id) do %>
               <div class="text-center">
-                <%= image_tag @recipe.user.get_user_image(100, 100), class: "user-icon" %>
+                <%= image_tag @recipe.user.get_user_image, size: '100x100', class: "user-icon" %>
               </div>
             <% end %>
             <%= link_to user_path(@recipe.user.id) do %>
