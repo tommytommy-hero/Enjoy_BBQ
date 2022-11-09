@@ -14,9 +14,13 @@
           </div><br>
 
           <div class="col-12 count-show">
-            <div class=" btn genre-flame-item-show">
-              <%= link_to @recipe.genre.name, recipes_path(genre_id: @recipe.genre.id) %>
-            </div>
+            <% if @recipe.genre != nil %>
+              <div class=" btn genre-flame-item-show">
+                <%= link_to @recipe.genre.name, recipes_path(genre_id: @recipe.genre.id) %>
+              </div>
+            <% else %>
+              <div class="genre-flame-item-show-none">ジャンル未設定</div>
+            <% end %>
             <!--いいね機能-->
             <% if user_signed_in? %>
               <div id="recipe_<%= @recipe.id %>" class="col text-right show-fav">
