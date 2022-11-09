@@ -37,7 +37,7 @@ Rails.application.routes.draw do
         get 'confirm'
         post 'confirm'
       end
-      
+
       collection do
         get 'rank'
       end
